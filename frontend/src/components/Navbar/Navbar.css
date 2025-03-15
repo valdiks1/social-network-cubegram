@@ -62,6 +62,10 @@ nav{
     color: #78DBFF;
 }
 
+.nav-link.active{
+    color: #78DBFF;
+}
+
 .navbar-inner .right{
     position: absolute;
     right: 0;

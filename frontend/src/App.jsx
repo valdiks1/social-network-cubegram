@@ -1,4 +1,5 @@
-import Navbar from "./components/Navbar/Navbar"
+import Navbar from "./components/Navbar/Navbar";
+import { Outlet } from "react-router";
 
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <Outlet />
     </>
   )
 }
