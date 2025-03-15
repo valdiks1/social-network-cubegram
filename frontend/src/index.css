@@ -1,4 +1,4 @@
-:root {
+/*:root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -65,4 +65,40 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}*/
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Jaro";
+  font-weight: 400;
+  src: url("./assets/fonts/Jaro/Jaro-Regular-VariableFont_opsz.ttf");
+}
+
+@font-face {
+  font-family: "Jockey One";
+  font-weight: 400;
+  src: url("./assets/fonts/Jockey_One/JockeyOne-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Inria Serif";
+  font-weight: 400;
+  src: url("./assets/fonts/Inria_Serif/InriaSerif-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Inria Serif";
+  font-weight: 400;
+  src: url("./assets/fonts/Inria_Serif/InriaSerif-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 400;
+  src: url("./assets/fonts/Inter/Inter-Italic-VariableFont_opsz\,wght.ttf");
 }
