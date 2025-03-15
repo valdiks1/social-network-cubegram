@@ -1,0 +1,55 @@
+.type-cube{
+    width: 712px;
+    margin-top: 13px;
+}
+
+.type-cube h2{
+    font-family: 'Jaro';
+    font-weight: 400;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.inner-type-cube{
+    display: flex;
+    width: 100%;
+}
+
+.cube-btn {
+    width: 139px;
+    height: 139px;
+    background-color: #AFEEFF;
+    border-radius: 30px;
+    margin-right: 50px;
+    cursor: pointer;
+    padding-top: 3px;
+    transition: .2s;
+}
+
+.cube-btn:hover{
+    background-color: #a3ebff;
+}
+
+.cube-btn:last-child{
+    margin-right: 0;
+}
+
+.cube-btn h3{
+    font-family: 'Jaro';
+    font-weight: 400;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.cube-btn .img{
+    width: 75px;
+    height: 75px;
+    margin: 0 auto;
+}
+
+.cube-btn .img img{
+    width: 100%;
+    height: 100%;
+}
