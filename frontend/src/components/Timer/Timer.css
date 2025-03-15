@@ -1,0 +1,56 @@
+.timer{
+    width: 909px;
+    height: 471px;
+    background-color: #F6F6F6;
+    border-radius: 50px;
+    -webkit-box-shadow: 2px 0px 20px 3px rgba(0,0,0,0.25);
+    -moz-box-shadow: 2px 0px 20px 3px rgba(0,0,0,0.25);
+    box-shadow: 2px 0px 20px 3px rgba(0,0,0,0.25);
+    padding: 10px;
+}
+
+.timer h2{
+    font-size: 30px;
+    font-family: 'Jaro';
+    font-weight: 400;
+    text-align: center;
+}
+
+.timer .scramble{
+    margin-top: 42px;
+    text-align: center;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 25px;
+    letter-spacing: 10%;
+    margin-bottom: 18px;
+}
+
+.timer .time p{
+    font-size: 128px;
+    text-align: center;
+}
+
+.timer .time{
+    width: 328px;
+    margin: 0 auto;
+    margin-bottom: 18px;
+}
+
+.timer .btn-group{
+    display: flex;
+    width: 112px;
+    margin: 0 auto;
+    font-family: 'Inria Serif';
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.timer .btn-group button{
+    background: none;
+    border: none;
+    font-family: 'Inria Serif';
+    font-weight: 400;
+    font-size: 30px;
+    cursor: pointer;
+}

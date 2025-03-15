@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Timer from '../../components/Timer/Timer';
 import TypeOfCube from '../../components/TypeOfCube/TypeOfCube';
 import './Main.css';
 
@@ -8,7 +9,9 @@ const Main = () => {
     return(
         <div className="main-container">
             <TypeOfCube setType={setTypeOfCube} />
-            {typeOfCube}
+            <section className="timerAndResults">
+                <Timer />
+            </section>
         </div>
     );
 }
