@@ -6,12 +6,12 @@ import './Main.css';
 
 const Main = () => {
 
-    const [typeOfCube, setTypeOfCube] = useState(3);
+    const [typeOfCube, setTypeOfCube] = useState("3x3x3");
     return(
         <div className="main-container">
             <TypeOfCube setType={setTypeOfCube} />
             <section className="timerAndResults">
-                <Timer />
+                <Timer type={typeOfCube} />
                 <SessionResults />
             </section>
         </div>
