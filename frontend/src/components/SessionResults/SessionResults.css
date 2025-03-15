@@ -1,0 +1,37 @@
+.session-results{
+    width: 530px;
+    height: 471px;
+    background-color: #F6F6F6;
+    border-radius: 50px;
+    -webkit-box-shadow: 2px 0px 20px 3px rgba(0,0,0,0.25);
+    -moz-box-shadow: 2px 0px 20px 3px rgba(0,0,0,0.25);
+    box-shadow: 2px 0px 20px 3px rgba(0,0,0,0.25);
+    padding: 10px 34px;
+
+}
+
+.session-results h2{
+    font-size: 30px;
+    font-family: 'Jaro';
+    font-weight: 400;
+    text-align: center;
+}
+
+.session-results p{
+    margin-top: 32px;
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.session-results p span{
+    margin-right: 20px;
+}
+
+.session-results p span.worst{
+    color: #BE0000;
+}
+
+.session-results p span.best{
+    color: #209A20;
+}
