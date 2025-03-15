@@ -1,5 +1,3 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
 import './index.css'
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
@@ -21,19 +19,3 @@ ReactDOM.createRoot(root).render(
       </Routes>
     </BrowserRouter>
 );
-
-/*createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="/" index element={<Main/>}/>
-          <Route path="/myprofile" element={<MyPorfile/>}/>
-          <Route path="/records" element={<Records/>}/>
-          <Route path="/rooms" element={<Rooms/>}/>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-    
-  </StrictMode>,
-)*/
