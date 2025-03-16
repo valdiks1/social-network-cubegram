@@ -8,3 +8,7 @@ main.profile .info{
     justify-content: space-between;
     margin-top: 75px;
 }
+
+main.profile .posts{
+    margin-top: 75px;
+}
