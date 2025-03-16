@@ -1,0 +1,29 @@
+.session-info{
+    width: 530px;
+    height: 974px;
+    background-color: #F6F6F6;
+    border-radius: 50px;
+    -webkit-box-shadow: 2px 0px 20px 3px rgba(0,0,0,0.25);
+    -moz-box-shadow: 2px 0px 20px 3px rgba(0,0,0,0.25);
+    box-shadow: 2px 0px 20px 3px rgba(0,0,0,0.25);
+    padding: 48px;
+}
+
+.session-info h2{
+    font-size: 25px;
+    font-family: 'Jaro';
+    font-weight: 400;
+    margin-bottom: 46px;
+    text-align: center;
+}
+
+.session-info p{
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 25px;
+    margin-bottom: 53px;
+}
+
+.session-info p:last-child{
+    margin-bottom: 0;
+}
