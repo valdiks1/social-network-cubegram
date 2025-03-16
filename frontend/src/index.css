@@ -100,5 +100,11 @@ button:focus-visible {
 @font-face {
   font-family: "Inter";
   font-weight: 400;
-  src: url("./assets/fonts/Inter/Inter-Italic-VariableFont_opsz\,wght.ttf");
+  src: url("./assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 200;
+  src: url("./assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf");
 }
