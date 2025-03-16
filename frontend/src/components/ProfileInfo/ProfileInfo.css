@@ -1,0 +1,62 @@
+.profile-info{
+    width: 1387px;
+    min-height: 420px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 40px;
+    padding-bottom: 25px;
+    background-color: #81A1B4;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.profile-info-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-info-header h2{
+    color: #fff;
+    font-family: 'Jockey One';
+    font-weight: 400;
+    font-size: 50px;
+}
+
+.profile-info-header button{
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: 'Jockey One';
+    font-weight: 400;
+    color: #fff;
+    font-size: 30px;
+    transition: .2s;
+}
+
+.profile-info-header button:hover{
+    color: #78DBFF;
+}
+
+.profile-info p{
+    margin-top: 10px;
+    font-size: 35px;
+    font-family: 'Jockey One';
+    font-weight: 400;
+    color: #fff;
+}
+
+.profile-records p{
+    display: flex;
+    width: 600px;
+    flex-wrap: wrap;
+}
+
+.profile-records p span{
+    margin-right: 114px;
+    margin-bottom: 10px;
+}
+
+.profile-records p span:nth-child(n+2){
+    margin-bottom: 0;
+}

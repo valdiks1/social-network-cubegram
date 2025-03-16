@@ -1,0 +1,10 @@
+main.profile{
+    width: 100%;
+}
+
+main.profile .info{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 75px;
+}

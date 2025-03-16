@@ -1,0 +1,21 @@
+.avatar{
+    width: 412px;
+    height: 420px;
+    background-color: #81A1B4;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.avatar-inner{
+    width: 340px;
+    height: 340px;
+    border-radius: 50px;
+    background-color: #C1C1C1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
