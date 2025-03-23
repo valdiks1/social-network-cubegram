@@ -1,0 +1,32 @@
+section.records {
+    width: 100%;
+    margin: 102px 0;
+}
+
+section.records .card {
+    max-width: 1658px;
+    padding: 64px 0;
+    background-color: #F6F6F6;
+    border-radius: 30px;
+    margin: 0 auto;
+    -webkit-box-shadow: 2px 0px 20px 3px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 2px 0px 20px 3px rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 0px 20px 3px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+}
+
+section.records .card table{
+    width: 1200px;
+    text-align: left;
+    font-size: 31px;
+    font-family: 'Inria Serif';
+    border-collapse: collapse;
+    background-color: #FCEADE;
+}
+
+section.records .card table td, section.records .card table th {
+    border: 1px solid grey;
+    text-align: left;
+    padding: 8px;
+  }
