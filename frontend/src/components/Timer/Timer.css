@@ -31,8 +31,12 @@
     text-align: center;
 }
 
+.timer .time p.ready{
+    color: #209A20;
+}
+
 .timer .time{
-    width: 328px;
+    width: 100%;
     margin: 0 auto;
     margin-bottom: 18px;
 }
@@ -53,4 +57,9 @@
     font-weight: 400;
     font-size: 30px;
     cursor: pointer;
+    transition: .2s;
+}
+
+.timer .btn-group button.activeFlag{
+    color: #BE0000;
 }
