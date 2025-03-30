@@ -1,0 +1,38 @@
+.rooms-menu-bar{
+    width: 100%;
+    background-color: #81A1B4;
+    margin-top: 64px;
+    height: 114px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rooms-menu-bar-inner{
+    width: 1150px;
+
+}
+
+.rooms-menu-bar-inner ul{
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.rooms-menu-bar-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 35px;
+    font-family: 'Inria Sans';
+    font-weight: 400;
+    transition: .2s;
+}
+
+.rooms-menu-bar-link.active{
+    text-decoration: underline;
+}
+
+.rooms-menu-bar-link:hover{
+    text-decoration: underline;
+}

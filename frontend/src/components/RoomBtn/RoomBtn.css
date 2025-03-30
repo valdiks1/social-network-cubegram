@@ -1,0 +1,34 @@
+.room-btn{
+    width: 168px;
+    height: 168px;
+    background-color: #AFEEFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.room-btn-inner{
+    width: 119px;
+    height: 138px;
+}
+
+.room-btn-inner .img{
+    width: 88px;
+    height: 88px;
+    margin: 0 auto;
+    margin-bottom: 7px;
+}
+
+.room-btn-inner .img img{
+    width: 100%;
+    height: 100%;
+}
+
+.room-btn-inner p{
+    font-size: 15px;
+    font-family: 'Inria Sans';
+    font-weight: 400;
+    text-align: center;
+}
