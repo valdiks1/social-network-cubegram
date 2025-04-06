@@ -1,0 +1,128 @@
+.login-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.login-modal-content{
+    max-width: 833px;
+    width: 100%;
+    height: 485px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: #81A1B4;
+    transform: translate(-50%,-50%);
+    border-radius: 50px;
+    padding: 30px 51px;
+}
+
+
+.login-modal-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #fff;
+}
+
+.login-modal-header h2{
+    font-size: 25px;
+    color: #fff;
+    font-family: 'Inria Serif';
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.login-modal-header .close{
+    cursor: pointer;
+}
+
+.login-modal-body{
+    padding-top: 17px;
+    border-bottom: 1px solid #fff;
+}
+
+.login-modal-body .form-item:first-child{
+    margin-bottom: 32px;
+}
+
+.login-modal-body .form-item:last-child{
+    margin-bottom: 45px;
+}
+
+.login-modal-body .form-item{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-modal-body .form-item label{
+    padding-left: 24px;
+    width: 100%;
+    color: #fff;
+    font-size: 25px;
+    font-family: 'Inria Serif';
+    font-weight: 300;
+    margin-bottom: 9px;
+}
+
+.login-modal-body .form-item input{
+    width: 100%;
+    height: 58px;
+    padding-left: 24px;
+    border: none;
+    background-color: #D9D9D9;
+    border-radius: 50px;
+    font-size: 25px;
+    font-family: 'Inria Serif';
+    font-weight: 300;
+}
+
+.login-modal-body .form-item input:focus{
+    border: none;
+}
+
+.login-modal-footer{
+    padding-top: 30px;
+    display: flex;
+    justify-content: end;
+}
+
+.login-modal-footer .signup{
+    color: #fff;
+    border: #fff 1px solid;
+    border-radius: 50px;
+    width: 124px;
+    height: 49px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: 'Inria Serif';
+    font-weight: 300;
+    margin-right: 30px;
+}
+
+.login-modal-footer .login{
+    border: none;
+    border-radius: 50px;
+    background-color: #D9D9D9;
+    width: 124px;
+    height: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 300;
+    font-family: 'Inria Serif';
+    cursor: pointer;
+}
+
+
+
+
+
+

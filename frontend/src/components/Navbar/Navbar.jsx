@@ -1,10 +1,14 @@
 import { Link, NavLink } from "react-router";
 import SearchI from "../../assets/Search.svg";
+import LogInModal from "../LogInModal/LogInModal";
 import "./Navbar.css";
+import {useState} from 'react';
 
 const Navbar = () => {
 
-    return(
+    const [modalState, setModalState] = useState(false);
+
+    return(<>
         <header>
             <nav>
                 <div className="navbar-inner">
@@ -18,11 +22,13 @@ const Navbar = () => {
                     </ul>
                     <div className="right">
                         <a href=""><img className="searchI" src={SearchI}/></a>
-                        <button className="login-btn">Log in</button>
+                        <button onClick={() => setModalState(true)} className="login-btn">Log in</button>
                     </div>
                 </div>
             </nav>
         </header>
+        <LogInModal call={modalState} onDestroy={() => setModalState(false)} />
+        </>
     )
 }
 
