@@ -33,7 +33,7 @@ const LogInModal = ({ call, onDestroy }) => {
                     </form>
                 </div>
                 <div className="login-modal-footer">
-                    <Link className='signup'>Sign Up</Link>
+                    <Link to='/signup' className='signup'>Sign Up</Link>
                     <button className='login' type='submit'>Log In</button>
                 </div>
 
