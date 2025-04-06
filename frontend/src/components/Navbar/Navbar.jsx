@@ -4,7 +4,7 @@ import LogInModal from "../LogInModal/LogInModal";
 import "./Navbar.css";
 import {useState} from 'react';
 
-const Navbar = () => {
+const Navbar = (props) => {
 
     const [modalState, setModalState] = useState(false);
 
@@ -27,7 +27,7 @@ const Navbar = () => {
                 </div>
             </nav>
         </header>
-        <LogInModal call={modalState} onDestroy={() => setModalState(false)} />
+        <LogInModal authStatus={props.authStatus} setAuthStatus={props.setAuthStatus} call={modalState} onDestroy={() => setModalState(false)} />
         </>
     )
 }

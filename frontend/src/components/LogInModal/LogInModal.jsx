@@ -1,8 +1,14 @@
 import './LogInModal.css';
 import cross from "../../assets/images/cross.svg";
 import {Link} from 'react-router';
+import { useState } from 'react';
+import {login} from '../../services/authService';
+import { useNavigate } from 'react-router';
 
-const LogInModal = ({ call, onDestroy }) => {
+const LogInModal = ({ call, onDestroy, setAuthStatus, authStatus }) => {
+    const [email, setEmail] = useState('');
+    const [pass, setPass] = useState('');
+    const navigate = useNavigate();
     if (!call) {
         return null;
     }
@@ -11,6 +17,20 @@ const LogInModal = ({ call, onDestroy }) => {
         if (e.target.className === 'login-modal') {
             onDestroy();
         }
+    }
+
+    
+
+    const handleSubmit = () => {
+        login(email, pass)
+            .then(() => {
+                setAuthStatus(true);
+                onDestroy();
+                navigate('/myprofile');
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
     }
 
     return (
@@ -24,17 +44,17 @@ const LogInModal = ({ call, onDestroy }) => {
                     <form>
                         <div className="form-item">
                             <label htmlFor="email">E-mail</label>
-                            <input placeholder='E-mail' id='email' type="email" />
+                            <input value={email} onChange={e => setEmail(e.target.value)} required placeholder='E-mail' id='email' type="email" />
                         </div>
                         <div className="form-item">
                             <label htmlFor="pass">Password</label>
-                            <input placeholder='Password' type="password" id='pass' />
+                            <input value={pass} onChange={e => setPass(e.target.value)} required placeholder='Password' type="password" id='pass' />
                         </div>
                     </form>
                 </div>
                 <div className="login-modal-footer">
                     <Link to='/signup' className='signup'>Sign Up</Link>
-                    <button className='login' type='submit'>Log In</button>
+                    <button onClick={handleSubmit} className='login' type='button'>Log In</button>
                 </div>
 
             </div>
