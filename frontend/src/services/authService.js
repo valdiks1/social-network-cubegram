@@ -14,4 +14,15 @@ async function login(email, password) {
     }
 }
 
-export {login};
+async function logout() {
+    const response = await fetch("/api/v1/auth/logout", { method: "DELETE", credentials: "include" });
+    if (!response.ok) {
+        if (response.status === 400) {
+            throw new Error("Bad request - session does not exist");
+        }
+        throw new Error("Error logging out");
+    }
+      
+  }
+
+export {login, logout};

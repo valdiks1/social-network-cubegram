@@ -48,10 +48,6 @@ nav{
     justify-content: space-between;
 }
 
-.nav-links li{
-    /*margin-right: 203px;*/
-}
-
 .nav-links li:last-child{
     margin-right: 0;
 }
@@ -90,7 +86,7 @@ nav{
 
 .navbar-inner .login-btn{
     margin-top: 15px;
-    margin-left: 40px;
+    margin-right: 15px;
     position: relative;
     top: -12px;
     font-family: 'Inria Serif';

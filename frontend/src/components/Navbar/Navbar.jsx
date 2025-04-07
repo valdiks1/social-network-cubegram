@@ -1,13 +1,27 @@
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import SearchI from "../../assets/Search.svg";
 import LogInModal from "../LogInModal/LogInModal";
 import "./Navbar.css";
 import { useState } from 'react';
 import avatar from '../../assets/images/avatar.svg';
+import { logout } from "../../services/authService";
 
 const Navbar = (props) => {
 
     const [modalState, setModalState] = useState(false);
+    const navigate = useNavigate();
+
+    function handleLogout() {
+        logout()
+            .then(() => {
+                props.setAuthStatus(false);
+                navigate('/');
+            })
+            .catch((error) => {
+                console.log(error.message);
+                props.setError(error.message)
+            });
+    }
 
     return (<>
         <header>
@@ -27,9 +41,9 @@ const Navbar = (props) => {
                     <div className="right">
                         <a href=""><img className="searchI" src={SearchI} /></a>
 
-                        {props.authStatus ? (<button onClick={() => setModalState(true)} className="login-btn">Log in</button>) : (
+                        {!props.authStatus ? (<button onClick={() => setModalState(true)} className="login-btn">Log in</button>) : (
                             <div className="right-inner">
-                                <button className="logout-btn">Log out</button>
+                                <button onClick={handleLogout} className="logout-btn">Log out</button>
                                 <div className="profile-btn">
                                     <NavLink className='profile-btn-link' to='/myprofile'><img src={avatar} alt="avatar" />My Profile</NavLink>
                                 </div>

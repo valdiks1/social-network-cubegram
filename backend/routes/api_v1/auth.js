@@ -38,4 +38,20 @@ router.post('/login', (req,res) => {
         })
 })
 
+router.delete("/logout", (req, res) => {    
+    if (req.session && req.session.userId) {        
+        req.session.destroy((err) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).end();
+            } else {
+                res.clearCookie(config.session.cookieName);
+                return res.status(200).end();
+            }
+        });
+    } else {
+        return res.status(400).end();
+    }
+});
+
 export default router;
