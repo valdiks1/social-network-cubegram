@@ -7,7 +7,7 @@ nav{
     height: 71px;
     background-color: #81A1B4;
     padding-left: 40px;
-    padding-right: 40px;
+    /*padding-right: 40px;*/
     
 
 }
@@ -16,7 +16,12 @@ nav{
     display: flex;
     width: 100%;
     height: 100%;
-    position: relative;
+    /*position: relative;*/
+    justify-content: space-between;
+}
+
+.navbar-inner .left{
+    display: flex;
 }
 
 .logo{
@@ -39,10 +44,12 @@ nav{
     list-style: none;
     height: 100%;
     padding-top: 19px;
+    width: 587px;
+    justify-content: space-between;
 }
 
 .nav-links li{
-    margin-right: 203px;
+    /*margin-right: 203px;*/
 }
 
 .nav-links li:last-child{
@@ -67,14 +74,18 @@ nav{
 }
 
 .navbar-inner .right{
-    position: absolute;
-    right: 0;
     height: 100%;
+    display: flex;
+}
 
+.navbar-inner .right .right-inner{
+    display: flex;
+    align-items: center;
 }
 
 .navbar-inner .searchI{
     margin-top: 22px;
+    margin-right: 14px;
 }
 
 .navbar-inner .login-btn{
@@ -98,4 +109,48 @@ nav{
 
 .navbar-inner .login-btn:hover{
     background-color: rgb(236, 236, 236);
+}
+
+.navbar-inner .logout-btn{
+    margin-top: 15px;
+    position: relative;
+    top: -12px;
+    font-family: 'Inria Serif';
+    font-size: 20px;
+    color: #000;
+    border: none;
+    padding: 9px 30px;
+    background-color: #fff;
+    border-radius: 30px;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+    transition: .2s;
+    margin-right: 14px;
+}
+
+.navbar-inner .profile-btn{
+    width: 285px;
+    height: 100%;
+}
+
+.profile-btn-link{
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-family: 'Jockey One';
+    text-decoration: none;
+    color: #fff;
+    font-size: 25px;
+}
+
+.profile-btn-link.active{
+    background-color: #657D8B;
+}
+
+.profile-btn-link img{
+    margin-right: 14px;
 }
