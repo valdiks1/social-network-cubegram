@@ -9,6 +9,7 @@ import pool from './config/db.js';
 import { config } from './config/config.js';
 
 import authRouter from './routes/api_v1/auth.js';
+import signUpRouter from './routes/api_v1/signup.js';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -47,5 +48,6 @@ if (process.env.STATUS === 'production') {
     ); 
 
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/signup', signUpRouter);
 
 export default app;

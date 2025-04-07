@@ -43,6 +43,9 @@ main.signup {
     background-color: #D9D9D9;
     border-radius: 50px;
     border: none;
+    font-size: 25px;
+    font-family: 'Inria Serif';
+    font-weight: 400;
 }
 
 .signup-form-item p {
