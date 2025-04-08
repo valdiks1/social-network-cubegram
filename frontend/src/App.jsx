@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Navbar authStatus={authStatus} setAuthStatus={setAuthStatus}/>
-      <Outlet />
+      <Outlet context={{authStatus}}/>
       <Footer />
     </>
   )

@@ -1,14 +1,14 @@
 import './ProfileInfo.css';
 
-const ProfileInfo = () => {
+const ProfileInfo = ({userData}) => {
     return(
         <div className="profile-info">
             <div className="profile-info-header">
-                <h2>Vladyslav Pehushyn</h2>
+                <h2>{userData.name}</h2>
                 <button>Settings</button>
             </div>
-            <p>Country: Ukraine</p>
-            <p>Sex: Male</p>
+            <p>Country: {userData.country}</p>
+            <p>Sex: {userData.sex}</p>
             <p>Records:</p>
             <div className="profile-records">
                 <p>
