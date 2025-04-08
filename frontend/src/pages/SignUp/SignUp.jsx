@@ -57,10 +57,10 @@ const SignUp = () => {
             credentials: "include",
             body: JSON.stringify(user)
         }).then((response) => {
-            navigate('/');
             if (!response.ok) {
                 throw new Error("Error adding new user");
             }
+            navigate('/');
         })
     }
 
@@ -75,8 +75,6 @@ const SignUp = () => {
             country: selectedCountry.label,
             dateOfBirth: date
         }
-        console.log('submit!');
-        console.log(newUser);
         signup(newUser).then(() => {
             
         }).catch(e => console.log(e));
