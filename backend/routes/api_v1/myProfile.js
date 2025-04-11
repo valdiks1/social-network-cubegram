@@ -1,5 +1,5 @@
 import express from 'express';
-import { getUser } from '../../models/myProfile.js';
+import { createPost, getUser } from '../../models/myProfile.js';
 
 var router = express.Router();
 
@@ -28,4 +28,18 @@ router.get('/', (req, res) => {
     }
 })
 
+
+router.post("/posts", (req,res) => {
+    if(req.session && req.session.userId){
+        const {text} = req.body;
+        createPost(req.session.userId, text).then(r => res.status(200).end()).catch(e => {
+            console.log(e);
+            res.status(500).end();
+        })
+    }else{
+        res.status(401).end();
+    }
+    
+
+})
 export default router;

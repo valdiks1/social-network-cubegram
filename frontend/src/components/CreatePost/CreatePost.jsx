@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { createPost } from "../../services/userProfileService";
 import "./CreatePost.css";
 
 const CreatePost = () => {
@@ -13,6 +14,10 @@ const CreatePost = () => {
     textarea.style.height = textarea.scrollHeight + "px";
   };
 
+  function handleCreatePost() {
+    createPost(text).then(r => console.log("yeahhhhh!")).catch((e) => console.log(e));
+  }
+
   return (
     <div className="create-post">
       <div className="create-post-body">
@@ -24,7 +29,7 @@ const CreatePost = () => {
         ></textarea>
       </div>
       <div className="create-post-footer">
-        <button>Post</button>
+        <button onClick={handleCreatePost}>Post</button>
       </div>
     </div>
   );

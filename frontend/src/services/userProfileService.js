@@ -7,4 +7,18 @@ async function getUser() {
     })
 }
 
-export {getUser};
+async function createPost(text) {
+    return await fetch('/api/v1/myprofile/posts', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text }),
+        credentials: "include"
+    }).then((response) => {
+        if(!response.ok){
+            throw new Error("Error creating new post")
+        }
+        return response.json();
+    })
+}
+
+export {getUser, createPost};
