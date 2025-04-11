@@ -17,8 +17,19 @@ async function createPost(text) {
         if(!response.ok){
             throw new Error("Error creating new post")
         }
+    })
+}
+
+async function getPosts(){
+    return await fetch('/api/v1/myprofile/posts',{
+        credentials: "include"
+    }).then((response) => {
+        if(!response.ok){
+            throw new Error("Error getting users posts");
+        }
+
         return response.json();
     })
 }
 
-export {getUser, createPost};
+export {getUser, createPost, getPosts};

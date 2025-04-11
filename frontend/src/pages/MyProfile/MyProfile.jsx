@@ -5,19 +5,21 @@ import ProfileInfo from '../../components/ProfileInfo/ProfileInfo';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import './MyProfile.css';
 import { useState } from 'react';
-import { getUser } from '../../services/userProfileService';
+import { getUser, getPosts } from '../../services/userProfileService';
 import { useEffect } from 'react';
 
 const MyPorfile = () => {
     const {authStatus} = useOutletContext();
     const navigate = useNavigate();
     const [user, setUser] = useState({});
+    const [posts, setPosts] = useState([]);
     if(!authStatus){
         navigate('/');
     }
 
     useEffect(() => {
         getUser().then(userR => setUser(userR)).catch(e => console.log(e));
+        getPosts().then(posts => setPosts(posts)).catch(e => console.log(e));
     },[])
 
     return(
@@ -27,11 +29,11 @@ const MyPorfile = () => {
                 <ProfileInfo userData={user} />
             </section>
             <section className="posts">
-                <CreatePost />
-                <Post 
-                    content={"i like speedcubing"} 
-                    date={"08.03.2025 22:56"}
-                    likes={0} />
+                <CreatePost setPosts={setPosts}/>
+                {posts.map((post) => <Post 
+                    content={post.text} 
+                    date={post.date}
+                    likes={0} />)}
             </section>
         </main>
     )

@@ -1,8 +1,8 @@
 import { useState, useRef } from "react";
-import { createPost } from "../../services/userProfileService";
+import { createPost, getPosts } from "../../services/userProfileService";
 import "./CreatePost.css";
 
-const CreatePost = () => {
+const CreatePost = ({setPosts}) => {
   const [text, setText] = useState("");
   const textareaRef = useRef(null);
 
@@ -14,8 +14,15 @@ const CreatePost = () => {
     textarea.style.height = textarea.scrollHeight + "px";
   };
 
-  function handleCreatePost() {
-    createPost(text).then(r => console.log("yeahhhhh!")).catch((e) => console.log(e));
+  async function handleCreatePost() {
+    try {
+      await createPost(text);
+      const updatedPosts = await getPosts();
+      setPosts(updatedPosts);
+      setText('');
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (

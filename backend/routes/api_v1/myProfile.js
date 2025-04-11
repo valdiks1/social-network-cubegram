@@ -1,5 +1,6 @@
 import express from 'express';
-import { createPost, getUser } from '../../models/myProfile.js';
+import { createPost, getPosts, getUser } from '../../models/myProfile.js';
+import { formatDate } from '../../utils/myprofileHelper.js';
 
 var router = express.Router();
 
@@ -41,5 +42,20 @@ router.post("/posts", (req,res) => {
     }
     
 
+})
+
+router.get("/posts", (req,res) => {
+    if(req.session && req.session.userId){
+        getPosts(req.session.userId).then((posts) => {
+            let result = [];
+            posts.rows.map(post => result.push({text: post.text, date: formatDate(post.date)}));
+            res.status(200).json(result);
+        }).catch(e => {
+            console.log(e);
+            res.status(500).end();
+        })
+    }else{
+        res.status(401).end();
+    }
 })
 export default router;
