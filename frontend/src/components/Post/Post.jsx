@@ -2,7 +2,7 @@ import './Post.css';
 import postSetings from '../../assets/images/profile/post_settings_button.png';
 import like from '../../assets/images/profile/like.png';
 
-const Post = ({content, date, likes}) => {
+const Post = ({id, content, date, likes}) => {
     return(
         <div className="post">
             <div className="post-body">

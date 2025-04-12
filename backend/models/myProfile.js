@@ -11,5 +11,5 @@ export function createPost(userId, text){
 }
 
 export function getPosts(userId){
-	return pool.query("SELECT text, date FROM posts WHERE id_u=$1 ORDER BY id DESC", [userId]);
+	return pool.query("SELECT id, text, date FROM posts WHERE id_u=$1 ORDER BY id DESC", [userId]);
 }

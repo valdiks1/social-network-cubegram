@@ -31,6 +31,8 @@ const MyPorfile = () => {
             <section className="posts">
                 <CreatePost setPosts={setPosts}/>
                 {posts.map((post) => <Post 
+                    key={post.id}
+                    id={post.id}
                     content={post.text} 
                     date={post.date}
                     likes={0} />)}

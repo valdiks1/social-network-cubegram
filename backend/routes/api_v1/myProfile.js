@@ -48,7 +48,7 @@ router.get("/posts", (req,res) => {
     if(req.session && req.session.userId){
         getPosts(req.session.userId).then((posts) => {
             let result = [];
-            posts.rows.map(post => result.push({text: post.text, date: formatDate(post.date)}));
+            posts.rows.map(post => result.push({id: post.id, text: post.text, date: formatDate(post.date)}));
             res.status(200).json(result);
         }).catch(e => {
             console.log(e);
