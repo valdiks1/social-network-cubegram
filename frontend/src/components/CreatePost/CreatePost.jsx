@@ -22,6 +22,11 @@ const CreatePost = ({setPosts}) => {
       setText('');
     } catch (e) {
       console.log(e);
+    } finally{
+      const textarea = textareaRef.current;
+      if (textarea) {
+        textarea.style.height = "auto";
+      }
     }
   }
 
