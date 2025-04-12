@@ -13,3 +13,7 @@ export function createPost(userId, text){
 export function getPosts(userId){
 	return pool.query("SELECT id, text, date FROM posts WHERE id_u=$1 ORDER BY id DESC", [userId]);
 }
+
+export function deletePost(id){
+    return pool.query("DELETE FROM posts WHERE id=$1",[id]);
+}

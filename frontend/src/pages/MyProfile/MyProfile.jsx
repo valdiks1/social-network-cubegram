@@ -33,6 +33,7 @@ const MyPorfile = () => {
                 {posts.map((post) => <Post 
                     key={post.id}
                     id={post.id}
+                    setPosts={setPosts}
                     content={post.text} 
                     date={post.date}
                     likes={0} />)}

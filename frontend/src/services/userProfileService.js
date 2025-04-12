@@ -32,4 +32,17 @@ async function getPosts(){
     })
 }
 
-export {getUser, createPost, getPosts};
+async function deletePost(id){
+    return await fetch('/api/v1/myprofile/posts', {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+        credentials: "include"
+    }).then((response) => {
+        if(!response.ok){
+            throw new Error("Error deleting post")
+        }
+    })
+}
+
+export {getUser, createPost, getPosts, deletePost};

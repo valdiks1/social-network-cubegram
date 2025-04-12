@@ -1,5 +1,5 @@
 import express from 'express';
-import { createPost, getPosts, getUser } from '../../models/myProfile.js';
+import { createPost, deletePost, getPosts, getUser } from '../../models/myProfile.js';
 import { formatDate } from '../../utils/myprofileHelper.js';
 
 var router = express.Router();
@@ -57,5 +57,13 @@ router.get("/posts", (req,res) => {
     }else{
         res.status(401).end();
     }
+})
+
+router.delete("/posts", (req,res) => {
+    const {id} = req.body;
+    deletePost(id).then(r => res.status(200).end()).catch(e => {
+        console.log(e);
+        res.status(500).end();
+    })
 })
 export default router;

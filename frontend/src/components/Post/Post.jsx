@@ -4,7 +4,7 @@ import like from '../../assets/images/profile/like.png';
 import ModifyPostsModal from '../ModifyPostsModal/ModifyPostsModal';
 import { useState, useEffect, useRef } from 'react';
 
-const Post = ({id, content, date, likes}) => {
+const Post = ({id, content, date, likes, setPosts}) => {
     const [modalState, setModalState] = useState(false);
     const textareaRef = useRef(null);
 
@@ -20,6 +20,7 @@ const Post = ({id, content, date, likes}) => {
             <ModifyPostsModal 
                 id={id}
                 call={modalState}
+                setPosts={setPosts}
                 onDestroy={() => setModalState(false)} />
             <div className="post-body">
                 
