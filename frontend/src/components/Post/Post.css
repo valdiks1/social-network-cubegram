@@ -22,7 +22,7 @@
     font-weight: 400;
     border: none;
     background: none;
-    width: 100%;
+    width: 97%;
     resize: none;
     overflow: hidden;
 }
@@ -36,6 +36,8 @@
     background: none;
     border: none;
     cursor: pointer;
+    position: absolute;
+    right: 24px;
 }
 
 .post-footer{
