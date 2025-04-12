@@ -1,0 +1,35 @@
+.modify-post-modal{
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    border-radius: 20px;
+    border: 1px #000 solid;
+    background-color: #fff;
+    right: 24px;
+    top: -60px;
+}
+
+.modify-post-modal .edit{
+    width: 100%;
+    height: 50%;
+    border-bottom: #000 1px solid;
+}
+
+.modify-post-modal .delete{
+    width: 100%;
+    height: 50%;
+}
+
+.modify-post-modal .edit button,
+.modify-post-modal .delete button{
+    width: 100%;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    font-size: 25px;
+    font-family: 'Inria Serif';
+    font-weight: 300;
+    cursor: pointer;
+}

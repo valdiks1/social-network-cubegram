@@ -2,6 +2,7 @@
     width: 100%;
     background-color: #81A1B4;
     margin: 95px 0;
+    position: relative;
 }
 
 .post-body{
@@ -19,6 +20,16 @@
     font-family: 'Inria Serif';
     color: #fff;
     font-weight: 400;
+    border: none;
+    background: none;
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+}
+
+.post-body .post-body-content:focus{
+    border: none;
+    outline: none;
 }
 
 .post-body .post-body-btn{
