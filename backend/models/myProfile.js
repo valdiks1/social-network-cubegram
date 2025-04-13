@@ -17,3 +17,7 @@ export function getPosts(userId){
 export function deletePost(id){
     return pool.query("DELETE FROM posts WHERE id=$1",[id]);
 }
+
+export function editPost(id, text){
+    return pool.query("UPDATE posts SET text=$1 WHERE id=$2", [text,id]);
+}
