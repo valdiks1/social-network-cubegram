@@ -13,11 +13,13 @@ const MyPorfile = () => {
     const navigate = useNavigate();
     const [user, setUser] = useState({});
     const [posts, setPosts] = useState([]);
-    if(!authStatus){
-        navigate('/');
-    }
+    
 
     useEffect(() => {
+        if(!authStatus){
+            navigate('/');
+        }
+
         getUser().then(userR => setUser(userR)).catch(e => console.log(e));
         getPosts().then(posts => setPosts(posts)).catch(e => console.log(e));
     },[])
