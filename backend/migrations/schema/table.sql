@@ -42,7 +42,7 @@ VALUES ('2x2x2', 200),
 ('5x5x5', 28000);
 
 CREATE TABLE IF NOT EXISTS attempts(
-	id serial NOT NULL,
+	id varchar(100) NOT NULL,
 	time bigint NOT NULL,											--result time
 	id_u int NOT NULL,
 	datetime timestamp without time zone NOT NULL,					--date of attempt

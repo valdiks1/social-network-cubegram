@@ -1,9 +1,12 @@
 import './Timer.css';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { randomScrambleForEvent } from "cubing/scramble";
+import { addAttempt, updateAttempt } from '../../services/timerService';
 
 const Timer = ({ type }) => {
     const [time, setTime] = useState(0);
+    const timeRef = useRef(0);
+    const attemptIdRef = useRef(null);
     const [isRunning, setIsRunning] = useState(false);
     const [isHolding, setIsHolding] = useState(false);
     const [ready, setReady] = useState('');
@@ -11,7 +14,7 @@ const Timer = ({ type }) => {
     const [changeScramble, setChangeScramble] = useState(0);
     const [plus2, setPlus2] = useState(false);
     const [dnf, setDnf] = useState(false);
-    
+
     let timerInterval;
 
     useEffect(() => {
@@ -31,10 +34,16 @@ const Timer = ({ type }) => {
             if (event.code === "Space") {
                 event.preventDefault();
                 if (isHolding) {
+                    timeRef.current = 0;
                     setTime(0);
                     setIsRunning(true);
                     setReady('');
                 } else if (isRunning) {
+                    const finalTime = timeRef.current;
+
+                    attemptIdRef.current = crypto.randomUUID();
+
+                    addAttempt(attemptIdRef.current, finalTime,type);
                     setIsRunning(false);
                     setChangeScramble(changeScramble+1);
                 }
@@ -53,7 +62,8 @@ const Timer = ({ type }) => {
     useEffect(() => {
         if (isRunning) {
             timerInterval = setInterval(() => {
-                setTime((prevTime) => prevTime + 10);
+                timeRef.current += 10;
+                setTime(timeRef.current);
             }, 10);
         } else {
             clearInterval(timerInterval);
@@ -91,7 +101,25 @@ const Timer = ({ type }) => {
 
     useEffect(() => {
         setScramble(getScramble());
-    },[type,changeScramble]);
+    }, [type, changeScramble]);
+
+    function handlePlus2(){
+        const newPlus2 = !plus2;
+        setPlus2(newPlus2);
+        if(attemptIdRef.current){
+            updateAttempt(attemptIdRef.current, {plus2: newPlus2, dnf: dnf}).then().catch(e => console.log(e));
+        }
+        
+    }
+
+    function handleDnf() {
+        const newDnf = !dnf;
+        setDnf(newDnf);
+        if(attemptIdRef.current){
+            updateAttempt(attemptIdRef.current, {plus2: plus2, dnf: newDnf}).then().catch(e => console.log(e));
+        }
+        
+    }
 
     return (
         <div className="timer">
@@ -105,9 +133,9 @@ const Timer = ({ type }) => {
             </div>
 
             <div className="btn-group">
-                <button className={plus2 ? 'activeFlag' : ''} onClick={() => setPlus2(!plus2)}>+2</button>
+                <button className={plus2 ? 'activeFlag' : ''} onClick={handlePlus2}>+2</button>
                 |
-                <button className={dnf ? 'activeFlag' : ''} onClick={() => setDnf(!dnf)}>DNF</button>
+                <button className={dnf ? 'activeFlag' : ''} onClick={handleDnf}>DNF</button>
             </div>
         </div>
     )
