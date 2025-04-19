@@ -1,0 +1,45 @@
+ul.user-link-list{
+    list-style: none;
+}
+
+ul.user-link-list li{
+    margin-bottom: 50px;
+    width: 100%;
+    height: 100px;
+}
+
+ul.user-link-list li:last-child{
+    margin-bottom: 0;
+}
+
+.user-link{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #7C9082;
+    border-radius: 30px;
+    padding-left: 30px;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 30px;
+    font-family: 'Inter';
+    font-weight: 400;
+    transition: .2s;
+}
+
+.user-link:hover{
+    background-color: #8ca293;
+}
+
+.user-link .avatar{
+    width: 70px;
+    height: 70px;
+    background: none;
+    margin-right: 40px;
+}
+
+.user-link .avatar img{
+    width: 100%;
+    height: 100%;
+}

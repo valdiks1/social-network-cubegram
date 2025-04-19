@@ -11,6 +11,7 @@ import MyRooms from './components/MyRooms/MyRooms';
 import OpenRooms from './components/OpenRooms/OpenRooms';
 import SignUp from './pages/SignUp/SignUp';
 import { Navigate } from "react-router-dom";
+import Search from './pages/Search/Search';
 
 ReactDOM.createRoot(root).render(
   <BrowserRouter>
@@ -25,6 +26,7 @@ ReactDOM.createRoot(root).render(
             <Route path='myrooms' element={<MyRooms/>} />
             <Route path='openrooms' element={<OpenRooms/>} />
           </Route>
+          <Route path='/search' element={<Search />} />
         </Route>
       <Route path="/signup" element={<SignUp/>} />
       </Routes>

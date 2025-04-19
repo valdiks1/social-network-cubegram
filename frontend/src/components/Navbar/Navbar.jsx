@@ -39,7 +39,7 @@ const Navbar = (props) => {
                     </div>
 
                     <div className="right">
-                        <a href=""><img className="searchI" src={SearchI} /></a>
+                        <NavLink to="/search"><img className="searchI" src={SearchI} /></NavLink>
 
                         {!props.authStatus ? (<button onClick={() => setModalState(true)} className="login-btn">Log in</button>) : (
                             <div className="right-inner">
