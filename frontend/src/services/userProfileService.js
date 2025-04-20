@@ -16,6 +16,15 @@ async function getUserById(id) {
     })
 }
 
+async function getPostsByUserId(id){
+    return await fetch(`/api/v1/user/${id}/posts`,{ credentials: "include" }).then((response) => { 
+        if (!response.ok) {
+            throw new Error("Error getting users posts");
+        }
+        return response.json();
+    })
+}
+
 async function createPost(text) {
     return await fetch('/api/v1/myprofile/posts', {
         method: "POST",
@@ -67,4 +76,4 @@ async function editPost(id, text){
     })
 }
 
-export {getUser, createPost, getPosts, deletePost, editPost, getUserById};
+export {getUser, createPost, getPosts, deletePost, editPost, getUserById, getPostsByUserId};
