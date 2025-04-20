@@ -12,6 +12,7 @@ import authRouter from './routes/api_v1/auth.js';
 import signUpRouter from './routes/api_v1/signup.js';
 import myProfileRouter from './routes/api_v1/myProfile.js';
 import timerRouter from './routes/api_v1/timer.js';
+import searchRouter from './routes/api_v1/search.js';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -53,5 +54,6 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/signup', signUpRouter);
 app.use('/api/v1/myprofile', myProfileRouter);
 app.use('/api/v1/timer', timerRouter);
+app.use('/api/v1/search', searchRouter);
 
 export default app;

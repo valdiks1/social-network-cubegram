@@ -3,7 +3,7 @@ import avatar from "../../assets/images/profile/avatar.svg";
 
 const UserLink = ({user}) => {
     return(
-        <Link className="user-link">
+        <Link to={`/user/${user.id}`} className="user-link">
             <div className="avatar"><img src={avatar} alt="avatar" /></div>
             <p>{user.name}</p>
         </Link>

@@ -36,6 +36,11 @@ section.search-input input{
     padding-left: 63px;
 }
 
+section.search-input input::placeholder{
+    color: #000;
+    font-size: 20px;
+}
+
 section.search-input .search-input-inner:after{
     content: "";
     display: block;
