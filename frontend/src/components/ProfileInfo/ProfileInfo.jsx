@@ -1,11 +1,11 @@
 import './ProfileInfo.css';
 
-const ProfileInfo = ({userData}) => {
+const ProfileInfo = ({userData, isMyProfile}) => {
     return(
         <div className="profile-info">
             <div className="profile-info-header">
                 <h2>{userData.name}</h2>
-                <button>Settings</button>
+                {isMyProfile && <button>Settings</button>}
             </div>
             <p>Country: {userData.country}</p>
             <p>Sex: {userData.sex}</p>

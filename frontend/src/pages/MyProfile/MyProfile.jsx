@@ -28,11 +28,12 @@ const MyPorfile = () => {
         <main className="profile">
             <section className="info">
                 <ProfileAvatar />
-                <ProfileInfo userData={user} />
+                <ProfileInfo isMyProfile={true} userData={user} />
             </section>
             <section className="posts">
                 <CreatePost setPosts={setPosts}/>
                 {posts.map((post) => <Post 
+                    isMyProfile={true}
                     key={post.id}
                     id={post.id}
                     setPosts={setPosts}

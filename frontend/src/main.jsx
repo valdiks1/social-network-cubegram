@@ -12,6 +12,7 @@ import OpenRooms from './components/OpenRooms/OpenRooms';
 import SignUp from './pages/SignUp/SignUp';
 import { Navigate } from "react-router-dom";
 import Search from './pages/Search/Search';
+import UserProfile from './pages/UserProfile/UserProfile';
 
 ReactDOM.createRoot(root).render(
   <BrowserRouter>
@@ -19,6 +20,7 @@ ReactDOM.createRoot(root).render(
         <Route path="/" element={<App />}>
           <Route path="/" index element={<Main/>}/>
           <Route path="/myprofile" element={<MyPorfile/>}/>
+          <Route path="/user/:id" element={<UserProfile />}/>
           <Route path="/records" element={<Records/>} />
           <Route path="/rooms" element={<Rooms/>}>
             <Route index element={<Navigate to="allrooms" replace />} />

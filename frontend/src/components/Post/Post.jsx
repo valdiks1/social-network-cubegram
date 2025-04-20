@@ -5,7 +5,7 @@ import ModifyPostsModal from '../ModifyPostsModal/ModifyPostsModal';
 import { useState, useEffect, useRef } from 'react';
 import { editPost, getPosts } from '../../services/userProfileService';
 
-const Post = ({id, content, date, likes, setPosts}) => {
+const Post = ({id, content, date, likes, setPosts, isMyProfile}) => {
     const [modalState, setModalState] = useState(false);
     const [editState, setEditState] = useState(false)
     const [postText, setPostText] = useState(content);
@@ -48,7 +48,7 @@ const Post = ({id, content, date, likes, setPosts}) => {
                     value={postText}
                     onChange={(e) => setPostText(e.target.value)}
                     readOnly={!editState} />
-                <button onClick={() => setModalState(!modalState)} className='post-body-btn'><img src={postSetings}/></button>
+                {isMyProfile && <button onClick={() => setModalState(!modalState)} className='post-body-btn'><img src={postSetings}/></button>}
             </div>
             <div className="post-footer">
                 <p className='post-footer-date'>{date}</p>
