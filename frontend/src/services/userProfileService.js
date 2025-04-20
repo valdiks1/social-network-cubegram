@@ -7,6 +7,15 @@ async function getUser() {
     })
 }
 
+async function getUserById(id) {
+    return await fetch(`/api/v1/user/${id}`,{ credentials: "include" }).then((response) => { 
+        if (!response.ok) {
+            throw new Error("Error getting users data");
+        }
+        return response.json();
+    })
+}
+
 async function createPost(text) {
     return await fetch('/api/v1/myprofile/posts', {
         method: "POST",
@@ -58,4 +67,4 @@ async function editPost(id, text){
     })
 }
 
-export {getUser, createPost, getPosts, deletePost, editPost};
+export {getUser, createPost, getPosts, deletePost, editPost, getUserById};

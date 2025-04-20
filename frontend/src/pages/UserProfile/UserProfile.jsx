@@ -2,15 +2,13 @@ import ProfileAvatar from "../../components/ProfileAvatar/ProfileAvatar";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 import Post from "../../components/Post/Post";
 import { useParams } from "react-router";
+import { useEffect } from "react";
+import { getUserById } from "../../services/userProfileService";
+import { useState } from "react";
 
 const UserProfile = () => {
     const {id} = useParams();
-    console.log(id);
-    const user = {
-        name: "name",
-        country: "country",
-        sex: "wasn't"
-    }
+    const [user, setUser] = useState({});
 
     const posts = [
         {
@@ -23,6 +21,12 @@ const UserProfile = () => {
     const setPosts = () => {
         return;
     }
+
+    useEffect(() => {
+        getUserById(id).then(user => {
+            setUser(user);
+        }).catch(e => console.log(e));
+    },[])
 
     return(
         <main className="profile">
