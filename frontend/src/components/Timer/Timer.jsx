@@ -2,8 +2,9 @@ import './Timer.css';
 import { useState, useEffect, useRef } from "react";
 import { randomScrambleForEvent } from "cubing/scramble";
 import { addAttempt, updateAttempt } from '../../services/timerService';
+import { formatTime } from '../../utils/time';
 
-const Timer = ({ type }) => {
+const Timer = ({ type, getMainAttempts }) => {
     const [time, setTime] = useState(0);
     const timeRef = useRef(0);
     const attemptIdRef = useRef(null);
@@ -43,7 +44,10 @@ const Timer = ({ type }) => {
 
                     attemptIdRef.current = crypto.randomUUID();
 
-                    addAttempt(attemptIdRef.current, finalTime,type);
+                    addAttempt(attemptIdRef.current, finalTime,type).then(() => {
+                        getMainAttempts();
+                    })
+                    
                     setIsRunning(false);
                     setChangeScramble(changeScramble+1);
                 }
@@ -71,12 +75,7 @@ const Timer = ({ type }) => {
         return () => clearInterval(timerInterval);
     }, [isRunning]);
 
-    const formatTime = (milliseconds) => {
-        const minutes = Math.floor(milliseconds / 60000);
-        const seconds = Math.floor((milliseconds % 60000) / 1000);
-        const ms = Math.floor((milliseconds % 1000) / 10);
-        return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}.${ms.toString().padStart(2, "0")}`;
-    };
+    
 
     const getScramble = async () => {
         let puzzle;
@@ -107,7 +106,9 @@ const Timer = ({ type }) => {
         const newPlus2 = !plus2;
         setPlus2(newPlus2);
         if(attemptIdRef.current){
-            updateAttempt(attemptIdRef.current, {plus2: newPlus2, dnf: dnf}).then().catch(e => console.log(e));
+            updateAttempt(attemptIdRef.current, {plus2: newPlus2, dnf: dnf}).then(() => {
+                getMainAttempts();
+            }).catch(e => console.log(e));
         }
         
     }
@@ -116,7 +117,9 @@ const Timer = ({ type }) => {
         const newDnf = !dnf;
         setDnf(newDnf);
         if(attemptIdRef.current){
-            updateAttempt(attemptIdRef.current, {plus2: plus2, dnf: newDnf}).then().catch(e => console.log(e));
+            updateAttempt(attemptIdRef.current, {plus2: plus2, dnf: newDnf}).then(() => {
+                getMainAttempts();
+            }).catch(e => console.log(e));
         }
         
     }

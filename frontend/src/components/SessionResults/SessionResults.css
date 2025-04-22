@@ -17,21 +17,31 @@
     text-align: center;
 }
 
-.session-results p{
-    margin-top: 32px;
+.session-results .results {
+    display: flex;
+    height: 350px;
+    align-content: flex-start;
     font-family: 'Inter';
-    font-weight: 400;
     font-size: 25px;
+    font-weight: 400;
+    height: 350px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+    overflow-y: scroll;
 }
 
-.session-results p span{
+
+
+.session-results .results > div {
     margin-right: 20px;
 }
 
-.session-results p span.worst{
+
+
+.session-results .results div.worst{
     color: #BE0000;
 }
 
-.session-results p span.best{
+.session-results .results div.best{
     color: #209A20;
 }

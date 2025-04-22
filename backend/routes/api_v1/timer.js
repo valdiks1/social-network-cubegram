@@ -13,7 +13,6 @@ router.post('/', async  (req,res) => {
 
         if (req.session && req.session.userId) {
             const now = new Date();
-            now.setSeconds(0, 0);
 
             await addAttempt(id, time, id_p, req.session.userId, now);
             res.status(200).end();
