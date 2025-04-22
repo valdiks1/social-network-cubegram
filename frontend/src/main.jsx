@@ -13,6 +13,7 @@ import SignUp from './pages/SignUp/SignUp';
 import { Navigate } from "react-router-dom";
 import Search from './pages/Search/Search';
 import UserProfile from './pages/UserProfile/UserProfile';
+import Room from './pages/Room/Room';
 
 ReactDOM.createRoot(root).render(
   <BrowserRouter>
@@ -28,6 +29,7 @@ ReactDOM.createRoot(root).render(
             <Route path='myrooms' element={<MyRooms/>} />
             <Route path='openrooms' element={<OpenRooms/>} />
           </Route>
+          <Route path="/room/:id" element={<Room />} />
           <Route path='/search' element={<Search />} />
         </Route>
       <Route path="/signup" element={<SignUp/>} />

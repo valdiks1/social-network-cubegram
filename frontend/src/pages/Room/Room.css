@@ -1,0 +1,86 @@
+.room-info{
+    width: 100%;
+    height: 250px;
+    background-color: #81A1B4;
+    padding-left: 258px;
+    margin-top: 73px;
+}
+
+.room-info-inner{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.room-info-inner .left{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.room-info-inner .left .cube-type{
+    width: 168px;
+    height: 168px;
+    border-radius: 30px;
+    background-color: #AFEEFF;
+    padding: 0 29px;
+    padding-top: 11px;
+    margin-right: 54px;
+
+}
+
+.room-info-inner .left .cube-type img{
+    width: 110px;
+    height: 110px;
+}
+
+.room-info-inner .left .cube-type p{
+    text-align: center;
+    font-family: 'Inria Serif';
+    font-weight: 400;
+    font-size: 35px;
+}
+
+.room-info-inner .left h1{
+    color: #fff;
+    font-family: 'Inria Serif';
+    font-weight: 400;
+    font-size: 35px;
+}
+
+.room-info-inner .right{
+    display: flex;
+    flex-direction: column;
+    padding: 27px;
+    justify-content: space-between;
+}
+
+.room-info-inner .right button{
+    border: none;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Jockey One';
+    font-size: 30px;
+    transition: .2s;
+}
+
+.room-info-inner .right button:hover{
+    text-decoration: underline;
+}
+
+.room-timer{
+    margin-top: 73px;
+    margin-bottom: 75px;
+    display: flex;
+    justify-content: center;
+}
+
+section.room-attempts-info{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 74px;
+}
+
