@@ -1,8 +1,9 @@
+import { Link } from 'react-router';
 import './RoomBtn.css';
 
 const RoomBtn = ({img,name,type}) => {
     return(
-        <div className="room-btn margin-room">
+        <Link to="/room/1" className="room-btn margin-room">
             <div className="room-btn-inner">
                 <div className="img">
                     <img src={img} />
@@ -10,7 +11,7 @@ const RoomBtn = ({img,name,type}) => {
                 <p>{type}</p>
                 <p>{name}</p>
             </div>
-        </div>
+        </Link>
     )
 }
 
