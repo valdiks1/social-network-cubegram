@@ -25,6 +25,15 @@ async function getPostsByUserId(id){
     })
 }
 
+async function getRecordsByUserId(id){
+    return await fetch(`/api/v1/user/${id}/records`,{ credentials: "include" }).then((response) => { 
+        if (!response.ok) {
+            throw new Error("Error getting users records");
+        }
+        return response.json();
+    })
+}
+
 async function createPost(text) {
     return await fetch('/api/v1/myprofile/posts', {
         method: "POST",
@@ -88,4 +97,4 @@ async function getUserRecords(){
     })
 }
 
-export {getUser, createPost, getPosts, deletePost, editPost, getUserById, getPostsByUserId, getUserRecords};
+export {getUser, createPost, getPosts, deletePost, editPost, getUserById, getPostsByUserId, getUserRecords, getRecordsByUserId};
