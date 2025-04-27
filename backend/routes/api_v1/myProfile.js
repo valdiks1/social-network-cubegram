@@ -1,6 +1,6 @@
 import express from 'express';
-import { createPost, deletePost, editPost, getPosts, getUser } from '../../models/myProfile.js';
-import { formatDate } from '../../utils/myprofileHelper.js';
+import { createPost, deletePost, editPost, getPosts, getUser, getUserRecords } from '../../models/myProfile.js';
+import { formatDate, safeGetMin } from '../../utils/myprofileHelper.js';
 
 var router = express.Router();
 
@@ -76,5 +76,26 @@ router.put("/posts", (req,res) => {
         res.status(500).end();
     })
 
+})
+
+router.get("/records", (req,res) => {
+    if(req.session && req.session.userId){
+        getUserRecords(req.session.userId).then(r => {
+            console.log(r.rows);
+            const result = {
+                '2x2x2': safeGetMin(r.rows, '2x2x2'),
+                '3x3x3': safeGetMin(r.rows, '3x3x3'),
+                '4x4x4': safeGetMin(r.rows, '4x4x4'),
+                '5x5x5': safeGetMin(r.rows, '5x5x5'),
+            }
+
+            res.status(200).json(result);
+        }).catch(e => {
+            console.log(e);
+            res.status(500).end();
+        })
+    }else{
+        res.status(500).end();
+    }
 })
 export default router;

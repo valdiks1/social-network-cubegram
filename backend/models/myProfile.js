@@ -21,3 +21,7 @@ export function deletePost(id){
 export function editPost(id, text){
     return pool.query("UPDATE posts SET text=$1 WHERE id=$2", [text,id]);
 }
+
+export function getUserRecords(id){
+    return pool.query("SELECT puzzles.name, MIN(attempts.time) FROM attempts LEFT OUTER JOIN puzzles ON attempts.id_p=puzzles.id WHERE attempts.id_u=$1 GROUP BY(puzzles.name)", [id]);
+}

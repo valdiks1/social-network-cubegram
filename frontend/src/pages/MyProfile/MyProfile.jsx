@@ -5,7 +5,7 @@ import ProfileInfo from '../../components/ProfileInfo/ProfileInfo';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import './MyProfile.css';
 import { useState } from 'react';
-import { getUser, getPosts } from '../../services/userProfileService';
+import { getUser, getPosts, getUserRecords } from '../../services/userProfileService';
 import { useEffect } from 'react';
 
 const MyPorfile = () => {
@@ -13,6 +13,7 @@ const MyPorfile = () => {
     const navigate = useNavigate();
     const [user, setUser] = useState({});
     const [posts, setPosts] = useState([]);
+    const [records, setRecords] = useState({});
     
 
     useEffect(() => {
@@ -22,13 +23,14 @@ const MyPorfile = () => {
 
         getUser().then(userR => setUser(userR)).catch(e => console.log(e));
         getPosts().then(posts => setPosts(posts)).catch(e => console.log(e));
+        getUserRecords().then(records => setRecords(records)).catch(e => console.log(e));
     },[])
 
     return(
         <main className="profile">
             <section className="info">
                 <ProfileAvatar />
-                <ProfileInfo isMyProfile={true} userData={user} />
+                <ProfileInfo isMyProfile={true} userData={user} userRecords={records} />
             </section>
             <section className="posts">
                 <CreatePost setPosts={setPosts}/>
