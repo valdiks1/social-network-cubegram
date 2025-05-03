@@ -15,6 +15,7 @@ import timerRouter from './routes/api_v1/timer.js';
 import searchRouter from './routes/api_v1/search.js';
 import userProfileRouter from './routes/api_v1/userProfile.js';
 import attemptsRouter from './routes/api_v1/attempts.js';
+import recordsRouter from './routes/api_v1/records.js';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -59,5 +60,6 @@ app.use('/api/v1/timer', timerRouter);
 app.use('/api/v1/search', searchRouter);
 app.use('/api/v1/user', userProfileRouter);
 app.use('/api/v1/attempts', attemptsRouter);
+app.use('/api/v1/records', recordsRouter);
 
 export default app;
