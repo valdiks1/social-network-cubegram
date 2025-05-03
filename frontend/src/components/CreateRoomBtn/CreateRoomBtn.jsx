@@ -1,17 +1,24 @@
 import './CreateRoomBtn.css';
 import plusImg from '../../assets/images/rooms/plus.svg';
+import { useState } from 'react';
+import CreateRoomModal from '../CreateRoomModal/CreateRoomModal';
 
 const CreateRoomBtn = () => {
-    return (
-        <div className="create-room-btn margin-room">
-            <div className="create-room-btn-inner">
-                <div className="img">
-                    <img src={plusImg} />
-                </div>
-                <p>Create room</p>
-            </div>
+    const [modalState, setModalState] = useState(false);
 
-        </div>
+    return (
+        <>
+            <div onClick={() => setModalState(true)} className="create-room-btn margin-room">
+                <div className="create-room-btn-inner">
+                    <div className="img">
+                        <img src={plusImg} />
+                    </div>
+                    <p>Create room</p>
+                </div>
+            </div>
+            <CreateRoomModal call={modalState} onDestroy={() => setModalState(false)} />
+        </>
+
     )
 }
 

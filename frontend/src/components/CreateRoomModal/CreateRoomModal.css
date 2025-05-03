@@ -1,0 +1,109 @@
+.create-room-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.create-room-modal-content{
+    max-width: 250px;
+    width: 100%;
+    height: 300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: #81A1B4;
+    transform: translate(-50%,-50%);
+    border-radius: 20px;
+    padding: 13px;
+    padding-left: 20px;
+}
+
+.create-room-modal-content .header{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding-top: 13px;
+    padding-right: 13px;
+}
+
+.create-room-modal-content .body{
+    width: 100%;
+    margin-top: 11px;
+}
+
+.create-room-modal-content .body .form-item{
+    margin-bottom: 60px;
+}
+
+.create-room-modal-content .body .form-item:last-child{
+    margin-bottom: 0;
+}
+
+.create-room-modal-content .body .form-item > label{
+    font-family: 'Inria Serif';
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 7px;
+}
+
+.create-room-modal-content .body .form-item > input[type='text']{
+    width: 150px;
+    height: 25px;
+    background-color: #D9D9D9;
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    padding-left: 9px;
+}
+
+.create-room-modal-content .body .form-item > input[type='text']:focus{
+    outline: none;
+}
+
+.create-room-modal-content .body .form-item .type-of-cube-list{
+    list-style: none;
+    width: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.create-room-modal-content .body .form-item .type-of-cube-list li{
+    display: flex;
+}
+
+.create-room-modal-content .body .form-item .type-of-cube-list li label{
+    font-family: 'Inria Serif';
+    font-weight: 400;
+    font-size: 12px;
+    color: #fff;
+
+}
+
+.create-room-modal-content .body .form-item .type-of-cube-list li input{
+    margin-right: 9px;
+}
+
+.create-room-modal-content .footer{
+    margin-top: 60px;
+    display: flex;
+    justify-content: end;
+    padding-right: 7px;
+}
+
+.create-room-modal-content .footer button{
+    padding: 2px 5px;
+    background-color: #D9D9D9;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.create-room-modal-content .footer button:first-child{
+    margin-right: 15px;
+}
