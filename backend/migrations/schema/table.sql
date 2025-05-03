@@ -53,3 +53,15 @@ CREATE TABLE IF NOT EXISTS attempts(
 	CONSTRAINT id_p_fk FOREIGN KEY(id_p) REFERENCES puzzles(id),
 	CONSTRAINT flags_check CHECK (flags IN ('+2', 'DNF', 'none'))
 );
+
+CREATE TABLE IF NOT EXISTS rooms(
+	id serial NOT NULL,
+	name varchar(100) NOT NULL,
+	current_users integer[],
+	allowed_users integer[],
+	id_owner int NOT NULL,
+	id_p int NOT NULL,
+	CONSTRAINT id_pk PRIMARY KEY(id),
+	CONSTRAINT id_owner_fk FOREIGN KEY(id_owner) REFERENCES users(id),
+	CONSTRAINT id_p_fk FOREIGN KEY(id_p) REFERENCES puzzles(id)
+)
