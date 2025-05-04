@@ -12,8 +12,16 @@ section.records .card {
     -webkit-box-shadow: 2px 0px 20px 3px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 2px 0px 20px 3px rgba(0, 0, 0, 0.25);
     box-shadow: 2px 0px 20px 3px rgba(0, 0, 0, 0.25);
-    display: flex;
-    justify-content: center;
+}
+
+section.records .card h2{
+    font-size: 40px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+section.records .card h2:first-child{
+    margin-top: 0;
 }
 
 section.records .card table{
@@ -23,6 +31,7 @@ section.records .card table{
     font-family: 'Inria Serif';
     border-collapse: collapse;
     background-color: #FCEADE;
+    margin: 0 auto;
 }
 
 section.records .card table td, section.records .card table th {
