@@ -11,11 +11,11 @@ import './Main.css';
 const Main = () => {
 
     const [typeOfCube, setTypeOfCube] = useState("3x3x3");
-    const [attempts, setAttempts] = useState([]);
+    const [attempts, setAttempts] = useState({allAttempts: []});
 
     const getAttempts = () => {
         getAttemptsByCubeType(typeOfCube).then(r => {
-            setAttempts(r);
+            setAttempts(r);console.log(r);
         }).catch(e => console.log(e));
     }
 
@@ -28,11 +28,11 @@ const Main = () => {
             <TypeOfCube setType={setTypeOfCube} />
             <section className="timerAndResults">
                 <Timer getMainAttempts={() => getAttempts()} type={typeOfCube} />
-                <SessionResults attempts={attempts} />
+                <SessionResults attempts={attempts.allAttempts} />
             </section>
             <section className="graphAndInfo">
                 <SessionGraph />
-                <SessionInfo />
+                <SessionInfo attempts={attempts} />
             </section>
         </div>
     );
