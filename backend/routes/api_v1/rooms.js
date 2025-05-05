@@ -1,0 +1,18 @@
+import express from 'express';
+import { createRoom } from '../../models/rooms.js';
+
+var router = express.Router();
+
+router.post('/', (req, res) => {
+    if(req.session && req.session.userId){
+        const {name, typeOfCube} = req.body;
+        createRoom(req.session.userId, name, typeOfCube).then(r => res.status(200).end()).catch(e => {
+            console.log(e);
+            res.status(500).end();
+        })
+    }else{
+        res.status(500).end();
+    }
+})
+
+export default router;
