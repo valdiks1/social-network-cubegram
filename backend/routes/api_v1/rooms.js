@@ -1,5 +1,5 @@
 import express from 'express';
-import { addUserToRoom, checkOwner, createRoom, getAllRooms, getMyRooms, getRoomData, getUserById, removeUser } from '../../models/rooms.js';
+import { addUserToRoom, checkOwner, createRoom, getAllRooms, getMyRooms, getRoomData, getUserById, removeUser, getOpenRooms } from '../../models/rooms.js';
 
 var router = express.Router();
 
@@ -27,6 +27,19 @@ router.get('/', (req, res) => {
 router.get('/myrooms', (req, res) => {
     if (req.session && req.session.userId) {
         getMyRooms(req.session.userId).then(result => {
+            res.status(200).json(result.rows);
+        }).catch(e => {
+            console.log(e);
+            res.status(500);
+        })
+    } else {
+        res.status(500).end();
+    }
+})
+
+router.get('/openrooms', (req, res) => {
+    if (req.session && req.session.userId) {
+        getOpenRooms(req.session.userId).then(result => {
             res.status(200).json(result.rows);
         }).catch(e => {
             console.log(e);

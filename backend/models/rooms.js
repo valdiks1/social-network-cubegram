@@ -22,6 +22,14 @@ export function getMyRooms(userId) {
     `,[userId]);
 }
 
+export function getOpenRooms(userId){
+    return pool.query(`
+        SELECT rooms.id, rooms.name as room_name, puzzles.name as type
+        FROM rooms JOIN puzzles ON rooms.id_p=puzzles.id
+        WHERE $1 = ANY(rooms.allowed_users)
+    `,[userId]);
+}
+
 export function getRoomData(id){
     return pool.query(`
         SELECT rooms.name, rooms.allowed_users, puzzles.name as type

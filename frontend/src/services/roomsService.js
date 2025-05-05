@@ -35,6 +35,18 @@ async function getMyRooms() {
     })
 }
 
+async function getOpenRooms(){
+    return await fetch('/api/v1/rooms/openrooms', {
+        credentials: "include"
+    }).then((response) => {
+        if (!response.ok) {
+            throw new Error("Error getting open rooms");
+        }
+
+        return response.json();
+    })
+}
+
 async function getRoom(id) {
     return await fetch(`/api/v1/rooms/room/${id}`, {
         credentials: "include"
@@ -77,4 +89,4 @@ async function removeUserFromRoom(roomId, userId){
     })
 }
 
-export { createRoom, getAllRooms, getMyRooms, getRoom, addUserToRoom, removeUserFromRoom };
+export { createRoom, getAllRooms, getMyRooms, getRoom, addUserToRoom, removeUserFromRoom, getOpenRooms };
