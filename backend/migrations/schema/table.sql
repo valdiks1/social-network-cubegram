@@ -65,3 +65,14 @@ CREATE TABLE IF NOT EXISTS rooms(
 	CONSTRAINT id_owner_fk FOREIGN KEY(id_owner) REFERENCES users(id),
 	CONSTRAINT id_p_fk FOREIGN KEY(id_p) REFERENCES puzzles(id)
 )
+
+CREATE TABLE IF NOT EXISTS room_attempts(
+	id serial NOT NULL,
+	id_a varchar(100) NOT NULL,
+	id_u int NOT NULL,
+	id_r int NOT NULL,
+	CONSTRAINT id_r_a_pk PRIMARY KEY(id),
+	CONSTRAINT id_a_fk FOREIGN KEY(id_a) REFERENCES attempts(id),
+	CONSTRAINT id_u_fk FOREIGN KEY(id_u) REFERENCES users(id),
+	CONSTRAINT id_r_fk FOREIGN KEY(id_r) REFERENCES rooms(id)
+)
