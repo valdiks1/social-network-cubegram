@@ -67,3 +67,10 @@ export function removeUser(roomId, userId){
         WHERE rooms.id=$2
     `,[userId, roomId]);
 }
+
+export function addAttemptIntoRoom(attemptId, userId, roomId){
+    return pool.query(`
+        INSERT INTO room_attempts(id_a, id_u, id_r)
+        VALUES($1, $2, $3)
+    `,[attemptId, userId, roomId]);
+}

@@ -89,4 +89,18 @@ async function removeUserFromRoom(roomId, userId){
     })
 }
 
-export { createRoom, getAllRooms, getMyRooms, getRoom, addUserToRoom, removeUserFromRoom, getOpenRooms };
+async function addAttemptIntoRoom(id, time, type, roomId){
+    return await fetch(`/api/v1/rooms/room/${roomId}/timer`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, time, type }),
+        credentials: "include"
+    }).then((response) => {
+        if (!response.ok) {
+            throw new Error("Error adding attempt into room");
+        }
+    })
+}
+
+
+export { createRoom, getAllRooms, getMyRooms, getRoom, addUserToRoom, removeUserFromRoom, getOpenRooms, addAttemptIntoRoom };

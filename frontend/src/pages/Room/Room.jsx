@@ -11,7 +11,7 @@ import AddUsersModal from '../../components/AddUsersModal/AddUsersModal';
 
 const Room = () => {
     const {id} = useParams();
-    const [room, setRoom] = useState({roomData: {}, allowed_users: []});
+    const [room, setRoom] = useState({roomData: {type: '3x3x3'}, allowed_users: []});
     const [addUsersModalState, setAddUsersModalState] = useState(false);
 
     function updateRoom(){
@@ -40,7 +40,7 @@ const Room = () => {
                 </div>
             </section>
             <section className="room-timer">
-                <Timer type={'3x3x3'}/>
+                <Timer updateRoom={updateRoom} roomId={id} type={room.roomData.type}/>
             </section>
             <section className="room-attempts-info">
                 <RoomAttemptsInfo />

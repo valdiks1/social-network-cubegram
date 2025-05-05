@@ -1,5 +1,7 @@
 import express from 'express';
-import { addUserToRoom, checkOwner, createRoom, getAllRooms, getMyRooms, getRoomData, getUserById, removeUser, getOpenRooms } from '../../models/rooms.js';
+import { addUserToRoom, checkOwner, createRoom, getAllRooms, getMyRooms, getRoomData, getUserById, removeUser, getOpenRooms, addAttemptIntoRoom } from '../../models/rooms.js';
+import { addAttempt } from '../../models/timer.js';
+import {getPuzzleId} from '../../models/puzzles.js';
 
 var router = express.Router();
 
@@ -107,5 +109,25 @@ router.delete('/room/:id/users', async (req, res) => {
     }
 
 });
+
+router.post('/room/:id/timer', async (req, res) => {
+    if(req.session && req.session.userId){
+        const roomId = req.params.id;
+        const {id, time, type} = req.body;
+        try{
+            const result = await getPuzzleId(type);
+            const id_p = result.rows[0].id;
+            const now = new Date();
+            await addAttempt(id, time, id_p , req.session.userId, now);
+            await addAttemptIntoRoom(id, req.session.userId, roomId);
+            res.status(200).end();
+        }catch(e){
+            console.log(e);
+            res.status(500).end();
+        }
+    }else{
+        res.status(500).end();
+    }
+})
 
 export default router;

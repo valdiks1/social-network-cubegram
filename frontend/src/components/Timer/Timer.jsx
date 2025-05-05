@@ -3,8 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import { randomScrambleForEvent } from "cubing/scramble";
 import { addAttempt, updateAttempt } from '../../services/timerService';
 import { formatTime } from '../../utils/time';
+import { addAttemptIntoRoom } from '../../services/roomsService';
 
-const Timer = ({ type, getMainAttempts }) => {
+const Timer = ({ updateRoom, roomId, type, getMainAttempts }) => {
     const [time, setTime] = useState(0);
     const timeRef = useRef(0);
     const attemptIdRef = useRef(null);
@@ -43,10 +44,13 @@ const Timer = ({ type, getMainAttempts }) => {
                     const finalTime = timeRef.current;
 
                     attemptIdRef.current = crypto.randomUUID();
-
-                    addAttempt(attemptIdRef.current, finalTime,type).then(() => {
-                        getMainAttempts();
-                    })
+                    if(roomId){
+                        addAttemptIntoRoom(attemptIdRef.current, finalTime,type, roomId).then(r => updateRoom()).catch(e => console.log(e));
+                    }else{
+                        addAttempt(attemptIdRef.current, finalTime,type).then(() => {
+                            getMainAttempts();
+                        })
+                    }
                     
                     setIsRunning(false);
                     setChangeScramble(changeScramble+1);
