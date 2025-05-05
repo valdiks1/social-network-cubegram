@@ -24,8 +24,38 @@ export function getMyRooms(userId) {
 
 export function getRoomData(id){
     return pool.query(`
-        SELECT rooms.name, puzzles.name as type
+        SELECT rooms.name, rooms.allowed_users, puzzles.name as type
         FROM rooms JOIN puzzles ON rooms.id_p=puzzles.id
         WHERE rooms.id=$1
     `,[id]);
+}
+
+export function getUserById(id){
+    return pool.query( `
+        SELECT id, name
+        FROM users
+        WHERE users.id=$1
+    `,[id]);
+}
+
+export function addUserToRoom(roomId, userId){
+    return pool.query(`
+        UPDATE rooms
+        SET allowed_users=array_append(allowed_users, $1)
+        WHERE rooms.id=$2 AND NOT ($1 = ANY(allowed_users))
+    `,[userId, roomId]);
+}
+
+export function checkOwner(roomId, userId){
+    return pool.query(`
+        SELECT * FROM rooms WHERE rooms.id=$1 AND rooms.id_owner=$2
+    `,[roomId,userId]);
+}
+
+export function removeUser(roomId, userId){
+    return pool.query(`
+        UPDATE rooms
+        SET allowed_users=array_remove(allowed_users, $1)
+        WHERE rooms.id=$2
+    `,[userId, roomId]);
 }

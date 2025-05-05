@@ -11,11 +11,15 @@ import AddUsersModal from '../../components/AddUsersModal/AddUsersModal';
 
 const Room = () => {
     const {id} = useParams();
-    const [room, setRoom] = useState({roomData: {}});
+    const [room, setRoom] = useState({roomData: {}, allowed_users: []});
     const [addUsersModalState, setAddUsersModalState] = useState(false);
 
-    useEffect(() => {
+    function updateRoom(){
         getRoom(id).then(room => setRoom(room)).catch(e => console.log);
+    }
+
+    useEffect(() => {
+        updateRoom()
     },[]);
 
     return(
@@ -41,7 +45,13 @@ const Room = () => {
             <section className="room-attempts-info">
                 <RoomAttemptsInfo />
             </section>
-            <AddUsersModal call={addUsersModalState} onDestroy={() => setAddUsersModalState(false)} />
+            <AddUsersModal 
+                roomId={id} 
+                allowed_users={room.allowed_users} 
+                call={addUsersModalState} 
+                onDestroy={() => setAddUsersModalState(false)}
+                updateRoom={updateRoom}
+            />
         </main>
     )
 }
