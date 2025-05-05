@@ -1,5 +1,5 @@
 import express from 'express';
-import { createRoom, getAllRooms, getMyRooms } from '../../models/rooms.js';
+import { createRoom, getAllRooms, getMyRooms, getRoomData } from '../../models/rooms.js';
 
 var router = express.Router();
 
@@ -35,6 +35,21 @@ router.get('/myrooms', (req, res) => {
     }else{
         res.status(500).end();
     }
+})
+
+router.get('/room/:id', async (req, res) => {
+    const id = req.params.id;
+    try{
+        const roomData = await getRoomData(id);
+        const result = {
+            roomData: roomData.rows[0]
+        }
+        res.status(200).json(result);
+    }catch(e){
+        console.log(e);
+        res.status(500).end();
+    }
+    
 })
 
 export default router;

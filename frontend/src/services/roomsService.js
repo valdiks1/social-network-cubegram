@@ -35,4 +35,16 @@ async function getMyRooms() {
     })
 }
 
-export { createRoom, getAllRooms, getMyRooms };
+async function getRoom(id) {
+    return await fetch(`/api/v1/rooms/room/${id}`, {
+        credentials: "include"
+    }).then((response) => {
+        if(!response.ok){
+            throw new Error("Error getting room");
+        }
+
+        return response.json();
+    })
+}
+
+export { createRoom, getAllRooms, getMyRooms, getRoom };

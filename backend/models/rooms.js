@@ -21,3 +21,11 @@ export function getMyRooms(userId) {
         WHERE rooms.id_owner=$1
     `,[userId]);
 }
+
+export function getRoomData(id){
+    return pool.query(`
+        SELECT rooms.name, puzzles.name as type
+        FROM rooms JOIN puzzles ON rooms.id_p=puzzles.id
+        WHERE rooms.id=$1
+    `,[id]);
+}
