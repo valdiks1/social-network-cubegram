@@ -8,7 +8,7 @@ async function login(email, password) {
     if (!response.ok) {
         // invalid password or user does not exist
         if (response.status === 401) {
-            throw new Error("Invalid credentials");
+            throw new Error("Invalid login or password");
         }
         throw new Error("Error logging in");
     }

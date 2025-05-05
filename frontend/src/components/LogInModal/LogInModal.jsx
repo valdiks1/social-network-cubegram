@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router';
 const LogInModal = ({ call, onDestroy, setAuthStatus, authStatus }) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
     if (!call) {
         return null;
@@ -30,6 +31,7 @@ const LogInModal = ({ call, onDestroy, setAuthStatus, authStatus }) => {
             })
             .catch((error) => {
                 console.log(error.message);
+                setErrorMessage(error.message);
             });
     }
 
@@ -50,6 +52,7 @@ const LogInModal = ({ call, onDestroy, setAuthStatus, authStatus }) => {
                             <label htmlFor="pass">Password</label>
                             <input value={pass} onChange={e => setPass(e.target.value)} required placeholder='Password' type="password" id='pass' />
                         </div>
+                        <p className='error-message'>{errorMessage}</p>
                     </form>
                 </div>
                 <div className="login-modal-footer">

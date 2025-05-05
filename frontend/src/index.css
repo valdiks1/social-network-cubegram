@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+.error-message{
+  color: red;
+  font-size: 20px;
+}
+
 @font-face {
   font-family: "Jaro";
   font-weight: 400;
