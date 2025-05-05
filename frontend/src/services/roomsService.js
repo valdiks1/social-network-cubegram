@@ -11,4 +11,16 @@ async function createRoom(name, typeOfCube) {
     })
 }
 
-export { createRoom };
+async function getAllRooms() {
+    return await fetch('/api/v1/rooms', {
+        credentials: "include"
+    }).then((response) => {
+        if(!response.ok){
+            throw new Error("Error getting all rooms");
+        }
+
+        return response.json();
+    })
+}
+
+export { createRoom, getAllRooms };

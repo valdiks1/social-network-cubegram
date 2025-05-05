@@ -1,5 +1,5 @@
 import express from 'express';
-import { createRoom } from '../../models/rooms.js';
+import { createRoom, getAllRooms } from '../../models/rooms.js';
 
 var router = express.Router();
 
@@ -13,6 +13,15 @@ router.post('/', (req, res) => {
     }else{
         res.status(500).end();
     }
+})
+
+router.get('/', (req, res) => {
+    getAllRooms().then(result => {
+        res.status(200).json(result.rows);
+    }).catch(e => {
+        console.log(e);
+        res.status(500).end();
+    })
 })
 
 export default router;
