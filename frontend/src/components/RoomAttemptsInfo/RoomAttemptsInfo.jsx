@@ -1,85 +1,54 @@
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { formatTime } from '../../utils/time';
 import './RoomAttemptsInfo.css';
 
-const RoomAttemptsInfo = () => {
+const RoomAttemptsInfo = ({ usersData }) => {
+    const [helperList, setHelperList] = useState([]);
+
+    useEffect(() => {
+        let maxLength = usersData.length ? Math.max(...usersData.map(user => user.attempts.length)) : 0;
+    
+        let newHelperList = [];
+    
+        for (let i = 0; i < maxLength; i++) {
+            let list = usersData.map(user => user.attempts[i] ?? null); // null если попытки нет
+            newHelperList.push(list);
+        }
+    
+        setHelperList(newHelperList.reverse());
+    }, [usersData]);
+    
+    console.log(usersData);
     return (
         <div className="room-attempts-info">
             <table>
-                <tr>
-                    <td>Attempt</td>
-                    <td>Vladyslav</td>
-                    <td>Artur</td>
-                    <td>Max</td>
-                    <td>Peter</td>
-                </tr>
-                <tr>
-                    <td>
-                        
-                    </td>
-                    <td>
-                        <p>Avg.: 4.88</p>
-                        <p>Best: 2.07</p>
-                        <p>Worst: 9.11</p>
-                        <p>Avg. 5: 0.00</p>
-                        <p>Avg. 10: 0.00</p>
-                        <p>Avg. 25: 0.00</p>
-                        <p>Avg. 50: 00.00</p>
-                    </td>
-                    <td>
-                        <p>Avg.: 4.88</p>
-                        <p>Best: 2.07</p>
-                        <p>Worst: 9.11</p>
-                        <p>Avg. 5: 0.00</p>
-                        <p>Avg. 10: 0.00</p>
-                        <p>Avg. 25: 0.00</p>
-                        <p>Avg. 50: 00.00</p>
-                    </td>
-                    <td>
-                        <p>Avg.: 4.88</p>
-                        <p>Best: 2.07</p>
-                        <p>Worst: 9.11</p>
-                        <p>Avg. 5: 0.00</p>
-                        <p>Avg. 10: 0.00</p>
-                        <p>Avg. 25: 0.00</p>
-                        <p>Avg. 50: 00.00</p>
-                    </td>
-                    <td>
-                        <p>Avg.: 4.88</p>
-                        <p>Best: 2.07</p>
-                        <p>Worst: 9.11</p>
-                        <p>Avg. 5: 0.00</p>
-                        <p>Avg. 10: 0.00</p>
-                        <p>Avg. 25: 0.00</p>
-                        <p>Avg. 50: 00.00</p>
-                    </td>
-                </tr>
-                <tr className='attempt'>
-                    <td>4</td>
-                    <td className='best'>3.53</td>
-                    <td>6.78</td>
-                    <td>4.43</td>
-                    <td>7.58</td>
-                </tr>
-                <tr className='attempt'>
-                    <td>3</td>
-                    <td>8.53</td>
-                    <td>6.78</td>
-                    <td className='best'>4.43</td>
-                    <td>7.58</td>
-                </tr>
-                <tr className='attempt'>
-                    <td>2</td>
-                    <td>8.53</td>
-                    <td>6.78</td>
-                    <td>5.43</td>
-                    <td className='best'>4.58</td>
-                </tr>
-                <tr className='attempt'>
-                    <td>1</td>
-                    <td>5.53</td>
-                    <td>6.78</td>
-                    <td className='best'>4.43</td>
-                    <td>7.58</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <td>Attempt</td>
+                        {usersData.map((user, id) => <td key={id}>{user.username}</td>)}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+
+                        </td>
+                        {usersData.map((user, id) => <td key={id}>
+                            <p>Avg.: {formatTime(user.info.avg)}</p>
+                            <p>Best: {formatTime(user.info.best)}</p>
+                            <p>Worst: {formatTime(user.info.worst)}</p>
+                            <p>Avg. 5: {formatTime(user.info.avg5)}</p>
+                            <p>Avg. 10: {formatTime(user.info.avg10)}</p>
+                            <p>Avg. 25: {formatTime(user.info.avg25)}</p>
+                            <p>Avg. 50: {formatTime(user.info.avg50)}</p>
+                        </td>)}
+                    </tr>
+                    
+                    {helperList.map((attempts, i) => <tr className='attempt'><td>{helperList.length-i}</td>
+                        {attempts.map(attempt => <td>{attempt ? formatTime(attempt) : '—'}</td>)}
+                    </tr>)}
+                </tbody>
             </table>
         </div>
     )

@@ -1,7 +1,8 @@
 import express from 'express';
-import { addUserToRoom, checkOwner, createRoom, getAllRooms, getMyRooms, getRoomData, getUserById, removeUser, getOpenRooms, addAttemptIntoRoom } from '../../models/rooms.js';
+import { addUserToRoom, checkOwner, createRoom, getAllRooms, getMyRooms, getRoomData, getUserById, removeUser, getOpenRooms, addAttemptIntoRoom, getUsersAttemptsIntoRoom } from '../../models/rooms.js';
 import { addAttempt } from '../../models/timer.js';
 import {getPuzzleId} from '../../models/puzzles.js';
+import { average } from '../../utils/attemptsHelper.js';
 
 var router = express.Router();
 
@@ -57,13 +58,30 @@ router.get('/room/:id', async (req, res) => {
     try {
         const roomData = await getRoomData(id);
         let allowed_users_list = [];
+        let usersData = []
         for (let i = 0; i < roomData.rows[0].allowed_users.length; i++) {
             const user = await getUserById(roomData.rows[0].allowed_users[i]);
             allowed_users_list.push(user.rows[0]);
+            const attempts = await getUsersAttemptsIntoRoom(id, roomData.rows[0].allowed_users[i]);
+            const userData = {
+                username: attempts.rows[0] ? attempts.rows[0].name : user.rows[0].name,
+                info: {
+                    avg: average(attempts.rows),
+                    avg5: average(attempts.rows, 5),
+                    avg10: average(attempts.rows, 10),
+                    avg25: average(attempts.rows, 25),
+                    avg50: average(attempts.rows, 50),
+                    worst: Math.max(...attempts.rows.map(a => a.time)),
+                    best: Math.min(...attempts.rows.map(a => a.time))
+                },
+                attempts: attempts.rows.map(a => a.time)
+            };
+            usersData.push(userData);
         }
         const result = {
             roomData: roomData.rows[0],
-            allowed_users: allowed_users_list
+            allowed_users: allowed_users_list,
+            usersData
         }
         res.status(200).json(result);
     } catch (e) {

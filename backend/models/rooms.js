@@ -74,3 +74,12 @@ export function addAttemptIntoRoom(attemptId, userId, roomId){
         VALUES($1, $2, $3)
     `,[attemptId, userId, roomId]);
 }
+
+export function getUsersAttemptsIntoRoom(roomId, userId){
+    return pool.query(`
+        SELECT users.name as name, attempts.time
+        FROM room_attempts, users, attempts
+        WHERE room_attempts.id_r=$1 AND room_attempts.id_u=$2 AND attempts.id=room_attempts.id_a AND room_attempts.id_u=users.id
+        ORDER BY attempts.datetime ASC
+    `,[roomId, userId]);
+}
