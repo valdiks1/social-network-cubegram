@@ -1,5 +1,5 @@
 import express from 'express';
-import { createRoom, getAllRooms } from '../../models/rooms.js';
+import { createRoom, getAllRooms, getMyRooms } from '../../models/rooms.js';
 
 var router = express.Router();
 
@@ -22,6 +22,19 @@ router.get('/', (req, res) => {
         console.log(e);
         res.status(500).end();
     })
+})
+
+router.get('/myrooms', (req, res) => {
+    if(req.session && req.session.userId){
+        getMyRooms(req.session.userId).then(result => {
+            res.status(200).json(result.rows);
+        }).catch(e => {
+            console.log(e);
+            res.status(500);
+        })
+    }else{
+        res.status(500).end();
+    }
 })
 
 export default router;
