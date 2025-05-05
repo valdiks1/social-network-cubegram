@@ -7,10 +7,12 @@ import { useEffect } from 'react';
 import { getRoom } from '../../services/roomsService';
 import { useState } from 'react';
 import { formatImg } from '../../utils/roomHelper';
+import AddUsersModal from '../../components/AddUsersModal/AddUsersModal';
 
 const Room = () => {
     const {id} = useParams();
     const [room, setRoom] = useState({roomData: {}});
+    const [addUsersModalState, setAddUsersModalState] = useState(false);
 
     useEffect(() => {
         getRoom(id).then(room => setRoom(room)).catch(e => console.log);
@@ -29,7 +31,7 @@ const Room = () => {
                     </div>
                     <div className="right">
                         <button>Settings</button>
-                        <button>Add users</button>
+                        <button onClick={() => setAddUsersModalState(true)}>Add users</button>
                     </div>
                 </div>
             </section>
@@ -39,6 +41,7 @@ const Room = () => {
             <section className="room-attempts-info">
                 <RoomAttemptsInfo />
             </section>
+            <AddUsersModal call={addUsersModalState} onDestroy={() => setAddUsersModalState(false)} />
         </main>
     )
 }
