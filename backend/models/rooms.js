@@ -83,3 +83,11 @@ export function getUsersAttemptsIntoRoom(roomId, userId){
         ORDER BY attempts.datetime ASC
     `,[roomId, userId]);
 }
+
+export function checkPermission(roomId, userId){
+    return pool.query(`
+        SELECT *
+        FROM rooms
+        WHERE rooms.id=$1 AND $2=ANY(rooms.allowed_users)
+    `,[roomId, userId]);
+}

@@ -102,5 +102,21 @@ async function addAttemptIntoRoom(id, time, type, roomId){
     })
 }
 
+async function havePermission(roomId) {
+    const response = await fetch(`/api/v1/rooms/room/${roomId}/permission`, {
+        credentials: "include"
+    });
 
-export { createRoom, getAllRooms, getMyRooms, getRoom, addUserToRoom, removeUserFromRoom, getOpenRooms, addAttemptIntoRoom };
+    if (response.status === 401) {
+        throw new Error("You do not have permission to be in this room. Please go back.");
+    }
+
+    if (!response.ok) {
+        throw new Error("Error getting permissions");
+    }
+
+    return await response.json();
+}
+
+
+export { createRoom, getAllRooms, getMyRooms, getRoom, addUserToRoom, removeUserFromRoom, getOpenRooms, addAttemptIntoRoom, havePermission };

@@ -1,5 +1,5 @@
 import express from 'express';
-import { addUserToRoom, checkOwner, createRoom, getAllRooms, getMyRooms, getRoomData, getUserById, removeUser, getOpenRooms, addAttemptIntoRoom, getUsersAttemptsIntoRoom } from '../../models/rooms.js';
+import { addUserToRoom, checkOwner, createRoom, getAllRooms, getMyRooms, getRoomData, getUserById, removeUser, getOpenRooms, addAttemptIntoRoom, getUsersAttemptsIntoRoom, checkPermission } from '../../models/rooms.js';
 import { addAttempt } from '../../models/timer.js';
 import {getPuzzleId} from '../../models/puzzles.js';
 import { average } from '../../utils/attemptsHelper.js';
@@ -145,6 +145,26 @@ router.post('/room/:id/timer', async (req, res) => {
         }
     }else{
         res.status(500).end();
+    }
+})
+
+router.get('/room/:id/permission', (req, res) => {
+    if(req.session && req.session.userId){
+        const id = req.params.id;
+        console.log(id + " " + req.session.userId);
+        checkPermission(id, req.session.userId).then(r => {
+            console.log(r.rows);
+            if(r.rows.length !== 1){
+                res.status(401).end();
+            }else{
+                res.status(200).json({permission: true});
+            }
+        }).catch(e => {
+            console.log(e);
+            res.status(500).end();
+        })
+    }else{
+        res.status(401).end();
     }
 })
 
