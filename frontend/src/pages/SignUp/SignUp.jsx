@@ -22,6 +22,8 @@ const SignUp = () => {
     const [sex, setSex] = useState('');
     const [date, setDate] = useState('');
 
+    const [passwordsError, setPasswordsError] = useState('');
+
     function handleName(e) {
         setName(e.target.value);
     }
@@ -35,11 +37,24 @@ const SignUp = () => {
     }
 
     function handlePassword(e) {
-        setPassword(e.target.value);
+        let pass = e.target.value;
+        setPassword(pass);
+        if(pass != reEnterPassword){
+            setPasswordsError('Passwords do not match.');
+        }else{
+            setPasswordsError('')
+        }
+        
     }
 
     function handleReEnterPassword(e) {
-        setReEnterPassword(e.target.value);
+        let rePass = e.target.value;
+        setReEnterPassword(rePass);
+        if(password != rePass){
+            setPasswordsError('Passwords do not match.');
+        }else{
+            setPasswordsError('');
+        }
     }
 
     function handleSex(e) {
@@ -66,18 +81,23 @@ const SignUp = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        const newUser = {
-            name: name,
-            login: login,
-            email: email,
-            password: password,
-            sex: sex,
-            country: selectedCountry.label,
-            dateOfBirth: date
+        if(password === reEnterPassword){
+            const newUser = {
+                name: name,
+                login: login,
+                email: email,
+                password: password,
+                sex: sex,
+                country: selectedCountry.label,
+                dateOfBirth: date
+            }
+            signup(newUser).then(() => {
+                
+            }).catch(e => console.log(e));
+        }else{
+            setPasswordsError('Passwords do not match.');
         }
-        signup(newUser).then(() => {
-            
-        }).catch(e => console.log(e));
+        
 
     }
 
@@ -89,23 +109,24 @@ const SignUp = () => {
                     <form onSubmit={e => handleSubmit(e)} className='signup-form'>
                         <div className="signup-form-item">
                             <label htmlFor="name">Name and Surname</label>
-                            <input required value={name} onChange={e => handleName(e)} id='name' type="text" />
+                            <input minLength={2} maxLength={100} required value={name} onChange={e => handleName(e)} id='name' type="text" />
                         </div>
                         <div className="signup-form-item">
                             <label htmlFor="login">Login</label>
-                            <input value={login} onChange={e => handleLogin(e)} required id='login' type="text" />
+                            <input minLength={5} maxLength={100} value={login} onChange={e => handleLogin(e)} required id='login' type="text" />
                         </div>
                         <div className="signup-form-item">
                             <label htmlFor="email">E-mail</label>
-                            <input value={email} onChange={e => handleEmail(e)} required id='email' type="email" />
+                            <input maxLength={100} value={email} onChange={e => handleEmail(e)} required id='email' type="email" />
                         </div>
                         <div className="signup-form-item">
                             <label htmlFor="password">Password</label>
-                            <input value={password} onChange={e => handlePassword(e)} required id='password' type="password" />
+                            <input maxLength={100} minLength={8} value={password} onChange={e => handlePassword(e)} required id='password' type="password" />
                         </div>
                         <div className="signup-form-item">
                             <label htmlFor="re-enter-password">Re-enter Password</label>
-                            <input value={reEnterPassword} onChange={e => handleReEnterPassword(e)} required id='re-enter-password' type="password" />
+                            <input maxLength={100} minLength={8} value={reEnterPassword} onChange={e => handleReEnterPassword(e)} required id='re-enter-password' type="password" />
+                            <p className='error-message'>{passwordsError}</p>
                         </div>
                         <div className="signup-form-item">
                             <label>Country</label>
@@ -140,7 +161,7 @@ const SignUp = () => {
                         </div>
                         <div className="signup-form-item">
                             <label htmlFor="date">Date of birth</label><br />
-                            <input value={date} onChange={e => handleDate(e)} required type="date" id='date' />
+                            <input max="2022-08-25" min="1850-01-01" value={date} onChange={e => handleDate(e)} required type="date" id='date' />
                         </div>
                         <div className="signup-form-footer">
                             <button type='submit' className="signup">
