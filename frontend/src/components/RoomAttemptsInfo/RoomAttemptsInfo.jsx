@@ -44,8 +44,8 @@ const RoomAttemptsInfo = ({ usersData }) => {
                         </td>)}
                     </tr>
                     
-                    {helperList.map((attempts, i) => <tr className='attempt'><td>{helperList.length-i}</td>
-                        {attempts.map(attempt => <td>{attempt ? formatTime(attempt) : '—'}</td>)}
+                    {helperList.map((attempts, i) => <tr key={i} className='attempt'><td>{helperList.length-i}</td>
+                        {attempts.map((attempt, j) => <td key={j}>{attempt ? formatTime(attempt) : '—'}</td>)}
                     </tr>)}
                 </tbody>
             </table>
