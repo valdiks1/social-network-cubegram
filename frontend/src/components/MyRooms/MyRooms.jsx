@@ -8,13 +8,17 @@ import { formatImg } from "../../utils/roomHelper";
 const MyRooms = () => {
     const [rooms, setRooms] = useState([]);
 
-    useEffect(() => {
+    const updateRooms = () => {
         getMyRooms().then(rooms => setRooms(rooms)).catch(e => console.log(e));
+    }
+
+    useEffect(() => {
+        updateRooms()
     }, []);
 
     return(
         <>
-            <CreateRoomBtn />
+            <CreateRoomBtn updateRooms={updateRooms} />
             {rooms.map(room => <RoomBtn key={room.id} id={room.id} img={formatImg(room.type)} name={room.room_name} type={room.type} />)}
         </>
     )

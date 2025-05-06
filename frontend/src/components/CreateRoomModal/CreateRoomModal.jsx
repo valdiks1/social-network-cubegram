@@ -3,7 +3,7 @@ import cross from "../../assets/images/cross.svg";
 import { useState } from 'react';
 import { createRoom } from '../../services/roomsService';
 
-const CreateRoomModal = ({ call, onDestroy }) => {
+const CreateRoomModal = ({ call, onDestroy, updateRooms }) => {
     const [name, setName] = useState('');
     const [typeOfCube, setTypeOfCube] = useState('');
 
@@ -17,7 +17,7 @@ const CreateRoomModal = ({ call, onDestroy }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        createRoom(name, typeOfCube).then(() => onDestroy()).catch(e => console.log(e));
+        createRoom(name, typeOfCube).then(() => {onDestroy(); updateRooms()}).catch(e => console.log(e));
     }
 
     if (!call) {
@@ -47,7 +47,9 @@ const CreateRoomModal = ({ call, onDestroy }) => {
                         <div className="form-item">
                             <label htmlFor="room-name">Room name:</label>
                             <input 
-                                value={name} 
+                                value={name}
+                                minLength={3}
+                                maxLength={100}
                                 onChange={handleName} 
                                 type="text" 
                                 id='room-name' 
@@ -64,7 +66,8 @@ const CreateRoomModal = ({ call, onDestroy }) => {
                                         name='type-cube' 
                                         id='222'
                                         checked={typeOfCube === '2x2x2'}
-                                        onChange={handleTypeOfCube} />
+                                        onChange={handleTypeOfCube}
+                                        required />
                                     <label htmlFor="222">2x2x2</label>
                                 </li>
                                 <li>
@@ -74,7 +77,8 @@ const CreateRoomModal = ({ call, onDestroy }) => {
                                         name='type-cube' 
                                         id='333'
                                         checked={typeOfCube === '3x3x3'}
-                                        onChange={handleTypeOfCube} />
+                                        onChange={handleTypeOfCube}
+                                        required />
                                     <label htmlFor="333">3x3x3</label>
                                 </li>
                                 <li>
@@ -84,7 +88,8 @@ const CreateRoomModal = ({ call, onDestroy }) => {
                                         name='type-cube' 
                                         id='444'
                                         checked={typeOfCube === '4x4x4'}
-                                        onChange={handleTypeOfCube} />
+                                        onChange={handleTypeOfCube}
+                                        required />
                                     <label htmlFor="444">4x4x4</label>
                                 </li>
                                 <li>
@@ -94,7 +99,8 @@ const CreateRoomModal = ({ call, onDestroy }) => {
                                         name='type-cube' 
                                         id='555' 
                                         checked={typeOfCube === '5x5x5'}
-                                        onChange={handleTypeOfCube}/>
+                                        onChange={handleTypeOfCube}
+                                        required />
                                     <label htmlFor="555">5x5x5</label>
                                 </li>
                             </ul>

@@ -3,7 +3,7 @@ import plusImg from '../../assets/images/rooms/plus.svg';
 import { useState } from 'react';
 import CreateRoomModal from '../CreateRoomModal/CreateRoomModal';
 
-const CreateRoomBtn = () => {
+const CreateRoomBtn = ({updateRooms}) => {
     const [modalState, setModalState] = useState(false);
 
     return (
@@ -16,7 +16,7 @@ const CreateRoomBtn = () => {
                     <p>Create room</p>
                 </div>
             </div>
-            <CreateRoomModal call={modalState} onDestroy={() => setModalState(false)} />
+            <CreateRoomModal updateRooms={updateRooms} call={modalState} onDestroy={() => setModalState(false)} />
         </>
 
     )
