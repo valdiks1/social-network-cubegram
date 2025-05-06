@@ -1,7 +1,7 @@
 import pool from '../config/db.js';
 
 export function getUsers(email){
-    return pool.query("SELECT * FROM users WHERE users.email=$1",[email]);
+    return pool.query("SELECT * FROM users WHERE users.email=$1 OR users.login=$1",[email]);
 }
 
 export function getUsersByName(name){

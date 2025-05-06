@@ -5,7 +5,7 @@
 - Link na verejnú inštanciu projektu: https://social-network-cubegram.onrender.com/
 
 # Info o reportovanej verzii:
-- Tag: final    <!-- Uviesť final_cisloSubverzie, ak ste robili vo finálnej verzii zmeny pred termínom odovzdania -->
+- Tag: final_2    <!-- Uviesť final_cisloSubverzie, ak ste robili vo finálnej verzii zmeny pred termínom odovzdania -->
 
 # Info k testovaniu:     
 <!-- Uveďte credentials testovacích používateľov, ak sú potrebné na otestovanie Vášho projektu. Uveďte aj akékoľvek iné relevantné informácie k testovaniu. Tieto informácie môžete alternatívne poslať aj e-mailom spolu s odovzdaním finálnej verzie (napr. ak nechcete testovacie credentials zverejňovať). -->

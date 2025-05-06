@@ -45,8 +45,8 @@ const LogInModal = ({ call, onDestroy, setAuthStatus, authStatus }) => {
                 <div className="login-modal-body">
                     <form>
                         <div className="form-item">
-                            <label htmlFor="email">E-mail</label>
-                            <input value={email} onChange={e => setEmail(e.target.value)} required placeholder='E-mail' id='email' type="email" />
+                            <label htmlFor="email">E-mail or login</label>
+                            <input value={email} onChange={e => setEmail(e.target.value)} required placeholder='E-mail or login' id='email' type="email" />
                         </div>
                         <div className="form-item">
                             <label htmlFor="pass">Password</label>
