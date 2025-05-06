@@ -44,8 +44,10 @@ nav{
     list-style: none;
     height: 100%;
     padding-top: 19px;
-    width: 587px;
+    max-width: 587px;
+    width: 100%;
     justify-content: space-between;
+    gap: 10vw;
 }
 
 .nav-links li:last-child{
