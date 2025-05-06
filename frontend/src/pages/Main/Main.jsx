@@ -15,7 +15,7 @@ const Main = () => {
 
     const getAttempts = () => {
         getAttemptsByCubeType(typeOfCube).then(r => {
-            setAttempts(r);console.log(r);
+            setAttempts(r);
         }).catch(e => console.log(e));
     }
 

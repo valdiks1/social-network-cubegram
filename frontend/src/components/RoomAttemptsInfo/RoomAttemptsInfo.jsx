@@ -19,7 +19,6 @@ const RoomAttemptsInfo = ({ usersData }) => {
         setHelperList(newHelperList.reverse());
     }, [usersData]);
     
-    console.log(usersData);
     return (
         <div className="room-attempts-info">
             <table>
